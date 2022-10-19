@@ -4,81 +4,101 @@
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="form mx-5">
                     <input ngModel type="text" formControlName="firstname"
-                        class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                        class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="First Name" required>
-                    <span class="" *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                    <span class="text-danger" *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
                         firstname is required
                     </span>
                     <input ngModel type="text" formControlName="lastname"
-                        class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="Last Name" required>
+                    <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                        Last Name is required
+                    </span>
                     <input ngModel type="email" formControlName="email"
-                        class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="Email" required>
-                    <span class="" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                    <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
                         email is required
                     </span>
 
                     <div class="row">
                         <div class="col-6">
-
-                            <input ngModel formControlName="birthdate" type="date"
-                                class="form-select text-black-50 fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                placeholder="Date of Birth" required>
-                        </div>
-                        <div class="col-6">
                             <select
-                                class="form-select text-black-50 fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 required>
                                 <option selected>Gender</option>
                                 <option value="1">male</option>
                                 <option value="2">female</option>
                             </select>
+                            <span class="text-danger"
+                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                Gender is required
+                            </span>
+                        </div>
+                        <div class="col-6">
+                            <input ngModel formControlName="birthdate" type="date"
+                                class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                placeholder="Date of Birth" required>
+                            <span class="text-danger"
+                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                Date of Birth is required
+                            </span>
                         </div>
                         <select Name="Skills"
-                            class="form-select text-black-50 fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Skills</option>
                             <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}} </option>
                         </select>
-                        <span class="" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                        <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
                             Skills is required
                         </span>
                         <select name="perference"
-                            class="form-select text-black-50 fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Job Perference</option>
                             <option *ngFor="let perference of perferencelist" [value]="perference.id">
                                 {{perference.name}}</option>
                         </select>
-                        <span class="" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                        <span class=" text-danger"
+                            *ngIf="submitted && registerForm.controls.email.errors?.['required']">
                             Job perference is required
                         </span>
                         <select
-                            class="form-select text-black-50 fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Start of Work</option>
                             <option value="1">Immediately</option>
                             <option value="2">With In 15 Days</option>
                             <option value="3">With In a Month</option>
                         </select>
+                        <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                            Start of work is required
+                        </span>
                         <div>
                             <input ngModel formControlName="resume" type="file"
-                                class="form-control fs-5 mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                class="form-control  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 placeholder="Upload Resume">
+                            <span class="text-danger"
+                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                Upload Resume is required
+                            </span>
                         </div>
 
                         <input ngModel formControlName="password" type="password"
-                            class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                            class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
                             placeholder="Password" required>
-                        <span class="" *ngIf="submitted && registerForm.controls.password.errors?.['required']">
+                        <span class="text-danger"
+                            *ngIf="submitted && registerForm.controls.password.errors?.['required']">
                             password is required
                         </span>
                         <input ngModel formControlName="confirmpassword" type="password"
-                            class="form-control fs-5 mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                            class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             placeholder="Confirm Password" required>
-                        <span class="" *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
-                            confirmpassword is required
+                        <span class="text-danger"
+                            *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
+                            confirm password is required
                         </span>
 
                         <div class="text-center">
@@ -94,12 +114,11 @@
                     </div>
                 </div>
             </form>
-            <div class="col-8">
-                <img src="../assets/Candidate_Registration.png" alt="candidate"
-                    style=" width: 800px;margin: 80px 200px;">
-            </div>
-
         </div>
+        <div class="col-8">
+            <img src="../assets/Candidate_Registration.png" alt="candidate" style=" width: 800px;margin: 80px 200px;">
+        </div>
+
 
     </div>
 </div>

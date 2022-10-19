@@ -1,117 +1,138 @@
 <ul ngbNav #nav="ngbNav" class="tabs nav-tabs" style="margin-top: 160px;border:none">
     <li ngbNavItem>
-     <button class="tabbtn">
-        <a ngbNavLink>Candidate Login</a>
-     </button> 
-      <ng-template ngbNavContent>
-        <div class="container-fluid">
-            <div class="row">
-                <div class=" col-4">
-                 <div class="container2 border border-primary rounded-5">
-                    <div class="mx-5">
-                        <form  [formGroup]= "checkoutForm" (ngSubmit)="onSubmit()">
-                            <input ngModel type="email"formControlName="username" class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0" value="" placeholder="Email/Username"  required>
-                            <span class=""
-                            *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
-                            username is required
-                        </span>
-                            <input ngmodel type="password" formControlName="password" class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0" value="" placeholder="Password" required> 
-                            <span class=""
-                                *ngIf="submitted && checkoutForm.controls.password.errors?.['required']">
-                                Password is required
-                            </span>
-                            <div class=" form-check mt-2">
-                                <input class="form-check-input border-primary" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label mx-n2 text-primary" for="flexCheckDefault">
-                                    Remember me
-                                </label>
-                                <span class="span text-primary "> Forgot Password ?</span>
-                                
-                                <div class="d-grid">
-                                    <button class=" btn btn-primary mx-3 mt-5 mb-3 px-5" type="submit"> Login</button>
-                                </div>
-                                
+        <button class="tabbtn">
+            <a ngbNavLink>Candidate Login</a>
+        </button>
+        <ng-template ngbNavContent>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" col-4">
+                        <div class="container2 border border-primary rounded-5">
+                            <div class="mx-5">
+                                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                                    <input ngModel type="email" formControlName="username"
+                                        class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        value="" placeholder="Email/Username" required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
+                                        username is required
+                                    </span>
+                                    <input ngmodel type="password" formControlName="password"
+                                        class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        value="" placeholder="Password" required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && checkoutForm.controls.password.errors?.['required']">
+                                        Password is required
+                                    </span>
+                                    <div class=" form-check mt-2">
+                                        <input class="form-check-input border-primary" type="checkbox" value=""
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label mx-n2 text-primary" for="flexCheckDefault">
+                                            Remember me
+                                        </label>
+                                        <span class="span text-primary "> Forgot Password ?</span>
+
+                                        <div class="d-grid">
+                                            <button class=" btn btn-primary mx-3 mt-5 mb-3 px-5" type="submit">
+                                                Login</button>
+                                        </div>
+
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                 </div> 
-                </div>
-                <div class="col-8 text-end">
-                    <img src="./assets/Candidate_Login.png" class="img-1 mt-5" alt="landing">
+                    <div class="col-8 text-end">
+                        <img src="./assets/Candidate_Login.png" class="img-1 mt-5" alt="landing">
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="container-fluid mb-5">
-            <div class="row" style="margin-left:60px;">
-                <div class=" col-6 ">
-                <div class=" bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 " style="margin-right: 60px;">
-                    <div class="mx-5">
-                        <h5 class="pt-4 text-white"> New Here ?</h5>
+
+            <div class="container-fluid mb-5">
+                <div class="row" style="margin-left:60px;">
+                    <div class=" col-6 ">
+                        <div class=" bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 "
+                            style="margin-right: 60px;">
+                            <div class="mx-5">
+                                <h5 class="pt-4 text-white"> New Here ?</h5>
+                            </div>
+                            <p class="text-white mx-5 lh-sm">
+                                Create your profile & start building your dreams
+                            </p>
+                            <div class="mb-5">
+                                <a class="text-white mx-5 fs-5 text-bold lh-sm fw-bold" routerLink="/Register">Register
+                                    Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-white mx-5 lh-sm">
-                        Create your profile & start building your dreams
-                    </p>
-                    <div class="mb-5"> 
-                        <a class="text-white mx-5 fs-5 text-bold lh-sm fw-bold" routerLink="/Register" >Register Now</a>
+                    <div class=" col-6">
+                        <div class="mb-5 bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 "
+                            style="margin-left: 50px;">
+                            <p class="pt-3 text-white text-center lh-sm">
+                                Your dreams Job is one click away !
+                            </p>
+                            <p class="text-white text-center lh-sm">
+                                Get the app on your mobile
+                            </p>
+                            <img class="img1 mb-2 h-25 w-25" src="./assets/google_store.png" alt="google play">
+                            <span class="mx-3"> <img class="h-25 w-25" src="./assets/ios_store.png"></span>
+                        </div>
                     </div>
                 </div>
-                </div>
-                <div class=" col-6">
-                    <div class="mb-5 bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 " style="margin-left: 50px;">
-                    <p class="pt-3 text-white text-center lh-sm">
-                        Your dreams Job is one click away !
-                    </p>
-                    <p class="text-white text-center lh-sm">
-                         Get the app on your mobile 
-                    </p>
-                    <img class="img1 mb-2 h-25 w-25" src="./assets/google_store.png" alt="google play">
-                    <span class="mx-3"> <img class="h-25 w-25" src="./assets/ios_store.png" ></span>
-                    </div>
+
             </div>
-        </div>
-            
-            </div>                
-      </ng-template>
+        </ng-template>
     </li>
     <li ngbNavItem>
         <button class="tabbtn">
             <a ngbNavLink>Employer Login</a>
         </button>
-      <ng-template ngbNavContent>
-        <div class="container-fluid">
-            <div class="row mt-5">
-                <div class="col-5 mt-5 border border-primary border-bottom-0  employer">
-                    <div class="mx-2">
+        <ng-template ngbNavContent>
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-5 mt-5 border border-primary border-bottom-0  employer">
+                        <div class="mx-2">
 
-                        <form class="form-horizontal text-center" >
-                            <input type="text" class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0" placeholder="Email Login ID">
-                            <input type="text" class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0" placeholder="Password">
-                            <div class="form-check mt-2">
-                                <div class=" text-primary mx-5 mt-5 font-weight-bold text-end"> Forgot Password ?</div>
-                                <div class=" form-check" style="text-align: left;">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label text-primary" for="flexCheckDefault">
-                                        Remind me
-                                    </label>
+                            <form class="form-horizontal" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                                <input type="text"
+                                    class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Email/Login ID" required>
+                                    <span class="text-danger "
+                                        *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
+                                        Email/Login ID is required
+                                    </span>
+                                <input type="text"
+                                    class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Password" required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
+                                        Password is required
+                                    </span>
+                                <div class="form-check mt-2">
+                                    <div class=" text-primary mx-5 mt-5 font-weight-bold text-end"> Forgot Password ?
+                                    </div>
+                                    <div class=" form-check" style="text-align: left;">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label text-primary" for="flexCheckDefault">
+                                            Remind me
+                                        </label>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Login</button>
+                                    </div>
+
                                 </div>
-                                <div class="d-grid">
-                                    <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Login</button>
-                                </div>
-                                
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="col-7">
-                        
+
                         <img class="image" src="./assets/hiring-process2.png" alt="hiring-process2">
+                    </div>
                 </div>
             </div>
-        </div>
-</ng-template>
+        </ng-template>
     </li>
-  </ul>
-  <div [ngbNavOutlet]="nav">
-  </div>
-
+</ul>
+<div [ngbNavOutlet]="nav">
+</div>
