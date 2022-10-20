@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } 
 import { TimeService } from '../time.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidationErrors, ValidatorFn  } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -14,17 +15,17 @@ export class RegisterComponent {
   data: any;
   perferencelist: any;
   registerForm = this.fb.group({
-    firstname: '',
-    lastname: '',
-    email: '  ',
-    gender: '',
-    birthdate: '',
-    skill: ' ',
-    jobpreference: ' ',
-    startofwork: ' ',
-    password: ' ',
-    confirmpassword: ' ',
-    resume: ' ',
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
+    gender: ['', Validators.required],
+    birthdate: ['', Validators.required],
+    skill: ['', Validators.required],
+    jobpreference: ['', Validators.required],
+    startofwork: ['', Validators.required],
+    password: ['', Validators.required],
+    confirmpassword: ['', Validators.required,( Validators.required)],
+    resume: ['', Validators.required],
     device_id: '1',
 
 
@@ -32,6 +33,7 @@ export class RegisterComponent {
   submitted = false;
   httpClint: any;
   formBilder: any;
+
 
   constructor(
     private timeService: TimeService,
@@ -58,7 +60,7 @@ export class RegisterComponent {
       this.perferencelist = data.results;
     })
   }
-  
+
   get signupFormControl() {
     return this.registerForm.controls;
   }
@@ -78,10 +80,12 @@ export class RegisterComponent {
       console.log('error');
     }
   }
+  
+  // get passwordMatchError() {
+  //   return (
+  //     this.registerForm.getError('mismatch') &&
+  //     this.registerForm.get('confirmPassword')?.touched
+  //   );
+  // }
 }
-
-
-
-
-
 
