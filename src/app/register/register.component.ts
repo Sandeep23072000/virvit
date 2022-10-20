@@ -13,7 +13,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn  } from '@angular/forms'
 export class RegisterComponent {
   skillslist: any;
   data: any;
-  perferencelist: any;
+  preferencelist: any;
   registerForm = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
@@ -43,8 +43,8 @@ export class RegisterComponent {
   ) {
     this.addskill();
     console.log(this.skillslist);
-    this.addperference();
-    console.log(this.perferencelist);
+    this.addpreference();
+    console.log(this.preferencelist);
 
   }
 
@@ -54,10 +54,10 @@ export class RegisterComponent {
       this.skillslist = data.results;
     })
   }
-  addperference() {
+  addpreference() {
     this.http.get('https://virvit.mydevpartner.website/vvapi/v1/job-preference/').subscribe((data: any) => {
       console.log(data.results);
-      this.perferencelist = data.results;
+      this.preferencelist = data.results;
     })
   }
 
@@ -66,7 +66,7 @@ export class RegisterComponent {
   }
   onSubmit() {
     console.log('id: ' + this.skillslist);
-    console.log('id: ' + this.perferencelist);
+    console.log('id: ' + this.preferencelist);
 
     this.submitted = true;
     console.log(this.registerForm.value);

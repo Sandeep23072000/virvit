@@ -12,7 +12,7 @@
                     <input ngModel type="text" formControlName="lastname"
                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="Last Name" required>
-                    <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                    <span class="text-danger" *ngIf="submitted && registerForm.controls.lastname.errors?.['required']">
                         Last Name is required
                     </span>
                     <input ngModel type="email" formControlName="email"
@@ -24,7 +24,7 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <select
+                            <select Name="gender"
                                 class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 required>
                                 <option selected>Gender</option>
@@ -32,7 +32,7 @@
                                 <option value="2">female</option>
                             </select>
                             <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                *ngIf="submitted && registerForm.controls.gender.errors?.['required']">
                                 Gender is required
                             </span>
                         </div>
@@ -41,39 +41,34 @@
                                 class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 placeholder="Date of Birth" required>
                             <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                *ngIf="submitted && registerForm.controls.birthdate.errors?.['required']">
                                 Date of Birth is required
                             </span>
                         </div>
-                        <select Name="Skills"
+                        <select formcontrolName="Skill"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Skills</option>
                             <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}} </option>
                         </select>
-                        <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                        <span class="text-danger" *ngIf="submitted && registerForm.controls.skill.errors?.['required']">
                             Skills is required
                         </span>
-                        <select name="perference"
+                        <select Name="perference"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Job Perference</option>
-                            <option *ngFor="let perference of perferencelist" [value]="perference.id">
+                            <option *ngFor="let perference of preferencelist" [value]="perference.id">
                                 {{perference.name}}</option>
                         </select>
                         <span class=" text-danger"
-                            *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                            *ngIf="submitted && registerForm.controls.jobpreference.errors?.['required']">
                             Job perference is required
                         </span>
-                        <select
+                        <input formControlName="startofwork" type="date"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
-                            <option selected>Start of Work</option>
-                            <option value="1">Immediately</option>
-                            <option value="2">With In 15 Days</option>
-                            <option value="3">With In a Month</option>
-                        </select>
-                        <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                        <span class="text-danger" *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
                             Start of work is required
                         </span>
                         <div>
@@ -81,7 +76,7 @@
                                 class="form-control  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 placeholder="Upload Resume">
                             <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                *ngIf="submitted && registerForm.controls.resume.errors?.['required']">
                                 Upload Resume is required
                             </span>
                         </div>
