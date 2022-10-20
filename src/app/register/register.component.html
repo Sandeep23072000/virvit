@@ -45,7 +45,7 @@
                                 Date of Birth is required
                             </span>
                         </div>
-                        <select formcontrolName="Skill"
+                        <select Name="Skill"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
                             <option selected>Skills</option>
@@ -57,13 +57,13 @@
                         <select Name="perference"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
-                            <option selected>Job Perference</option>
-                            <option *ngFor="let perference of preferencelist" [value]="perference.id">
-                                {{perference.name}}</option>
+                            <option selected>Job Preference</option>
+                            <option *ngFor="let preference of preferencelist" [value]="preference.id">
+                                {{preference.name}}</option>
                         </select>
                         <span class=" text-danger"
                             *ngIf="submitted && registerForm.controls.jobpreference.errors?.['required']">
-                            Job perference is required
+                            Job preference is required
                         </span>
                         <input formControlName="startofwork" type="date"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
