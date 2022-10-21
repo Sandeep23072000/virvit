@@ -7,7 +7,7 @@
                         class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="First Name" required>
                     <span class="text-danger" *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
-                        firstname is required
+                        first name is required
                     </span>
                     <input ngModel type="text" formControlName="lastname"
                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -15,21 +15,24 @@
                     <span class="text-danger" *ngIf="submitted && registerForm.controls.lastname.errors?.['required']">
                         Last Name is required
                     </span>
-                    <input ngModel type="email" formControlName="email"
+                    <input ngModel [email]="true" type="email" formControlName="email"
                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         placeholder="Email" required>
-                    <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                <div> <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
                         email is required
                     </span>
-
+                    <div class="text-danger" *ngIf="submitted && signupFormControl.email.errors">Email must be a valid
+                        email address
+                    </div>
+                </div>
                     <div class="row">
                         <div class="col-6">
-                            <select Name="gender"
+                            <select formControlName="gender"
                                 class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 required>
-                                <option selected>Gender</option>
-                                <option value="1">male</option>
-                                <option value="2">female</option>
+                                <option value="">Gender</option>
+                                <option value="Male">male</option>
+                                <option value="Female">female</option>
                             </select>
                             <span class="text-danger"
                                 *ngIf="submitted && registerForm.controls.gender.errors?.['required']">
@@ -45,19 +48,19 @@
                                 Date of Birth is required
                             </span>
                         </div>
-                        <select Name="Skill"
+                        <select formControlName="skill"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
-                            <option selected>Skills</option>
+                            <option value="">Skills</option>
                             <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}} </option>
                         </select>
                         <span class="text-danger" *ngIf="submitted && registerForm.controls.skill.errors?.['required']">
                             Skills is required
                         </span>
-                        <select Name="perference"
+                        <select formControlName="jobpreference" Name="preference"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
-                            <option selected>Job Preference</option>
+                            <option value="">Job Preference</option>
                             <option *ngFor="let preference of preferencelist" [value]="preference.id">
                                 {{preference.name}}</option>
                         </select>
@@ -68,7 +71,8 @@
                         <input formControlName="startofwork" type="date"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
-                        <span class="text-danger" *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
+                        <span class="text-danger"
+                            *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
                             Start of work is required
                         </span>
                         <div>
@@ -81,25 +85,23 @@
                             </span>
                         </div>
                         <div>
-                        <input ngModel formControlName="password" type="password"
-                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                            placeholder="Password" required>
-                        <span class="text-danger"
-                            *ngIf="submitted && registerForm.controls.password.errors?.['required']">
-                            password is required
-                        </span>
-                        <input ngModel formControlName="confirmpassword" type="password"
-                            class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                            placeholder="Confirm Password" required>
-                        <span class="text-danger"
-                            *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
-                            confirm password is required
-                        </span>
-                        <!-- <div>
-                            <div *ngIf="passwordMatchError">
-                                Password does not match
-                              </div>
-                        </div> -->
+                            <input ngModel formControlName="password" type="password"
+                                class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                placeholder="Password" required>
+                            <span class="text-danger"
+                                *ngIf="submitted && registerForm.controls.password.errors?.['required']">
+                                password is required
+                            </span>
+                            <input ngModel formControlName="confirmpassword" type="password"
+                                class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                placeholder="Confirm Password" required>
+                            <span class="text-danger"
+                                *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
+                                confirm password is required
+                            </span>
+                            <!-- <span *ngIf="registerForm.get('confirmPassword').errors.confirmPasswordValidator">Passsword and
+                                Confirm Password didn't match. 
+                            </span> -->
                         </div>
 
                         <div class="text-center">
@@ -117,7 +119,7 @@
             </form>
         </div>
         <div class="col-8">
-            <img src="../assets/Candidate_Registration.png" alt="candidate" style=" width: 800px;margin: 80px 200px;">
+            <img src="../assets/Candidate_Registration.png" alt="candidate" style=" width: 735px;margin: 70px 200px;">
         </div>
 
 

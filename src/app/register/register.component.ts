@@ -4,6 +4,7 @@ import { TimeService } from '../time.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn  } from '@angular/forms';
+// import { ConfirmPasswordValidator } from "./confirm-password.validator";
 
 @Component({
   selector: 'app-register',
@@ -17,19 +18,19 @@ export class RegisterComponent {
   registerForm = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
+    email: ['', Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
     gender: ['', Validators.required],
     birthdate: ['', Validators.required],
     skill: ['', Validators.required],
     jobpreference: ['', Validators.required],
     startofwork: ['', Validators.required],
     password: ['', Validators.required],
-    confirmpassword: ['', Validators.required,( Validators.required)],
+    confirmpassword: ['', Validators.required],
     resume: ['', Validators.required],
     device_id: '1',
+  
 
-
-  });
+});
   submitted = false;
   httpClint: any;
   formBilder: any;
@@ -65,8 +66,6 @@ export class RegisterComponent {
     return this.registerForm.controls;
   }
   onSubmit() {
-    console.log('id: ' + this.skillslist);
-    console.log('id: ' + this.preferencelist);
 
     this.submitted = true;
     console.log(this.registerForm.value);
