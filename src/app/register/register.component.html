@@ -48,6 +48,14 @@
                                 Date of Birth is required
                             </span>
                         </div>
+                        <div>
+                            <input ngModel type="text" formControlName="mobilephonenumber"
+                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                        placeholder="Mobile Phone Number" required>
+                    <span class="text-danger" *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
+                        Mobile Phone Number is required
+                    </span>
+                        </div>
                         <select formControlName="skill"
                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                             required>
@@ -92,6 +100,7 @@
                                 *ngIf="submitted && registerForm.controls.password.errors?.['required']">
                                 password is required
                             </span>
+                           
                             <input ngModel formControlName="confirmpassword" type="password"
                                 class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 placeholder="Confirm Password" required>
@@ -99,9 +108,9 @@
                                 *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
                                 confirm password is required
                             </span>
-                            <!-- <span *ngIf="registerForm.get('confirmPassword').errors.confirmPasswordValidator">Passsword and
-                                Confirm Password didn't match. 
-                            </span> -->
+                            <!-- <div *ngIf="registerForm.get('passwordMismatchError').errors?.passwordMatch">
+                                Passsword and  Confirm Password didn't match. 
+                            </div> -->
                         </div>
 
                         <div class="text-center">

@@ -3,8 +3,7 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } 
 import { TimeService } from '../time.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidationErrors, ValidatorFn  } from '@angular/forms';
-// import { ConfirmPasswordValidator } from "./confirm-password.validator";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +17,10 @@ export class RegisterComponent {
   registerForm = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
+    email: ['', Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
     gender: ['', Validators.required],
     birthdate: ['', Validators.required],
+    mobilephonenumber: ['', Validators.required],
     skill: ['', Validators.required],
     jobpreference: ['', Validators.required],
     startofwork: ['', Validators.required],
@@ -28,12 +28,14 @@ export class RegisterComponent {
     confirmpassword: ['', Validators.required],
     resume: ['', Validators.required],
     device_id: '1',
-  
 
-});
+
+
+  });
   submitted = false;
   httpClint: any;
   formBilder: any;
+
 
 
   constructor(
@@ -64,9 +66,23 @@ export class RegisterComponent {
 
   get signupFormControl() {
     return this.registerForm.controls;
+    function passwordMatch(password: any, confirm_password: any) {
+      return function (form: AbstractControl) {
+        const passwordvalue = form.get(password)?.value
+        const confirmPasswordValue = form.get(confirm_password)?.value
+
+        if (passwordvalue === confirmPasswordValue) {
+          return null;
+
+        }
+        return { passwordMissmatchError: true }
+      }
+    }
+  }
+  getControl(name: any): AbstractControl | null {
+    return this.registerForm.get(name)
   }
   onSubmit() {
-
     this.submitted = true;
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
@@ -79,12 +95,12 @@ export class RegisterComponent {
       console.log('error');
     }
   }
-  
-  // get passwordMatchError() {
-  //   return (
-  //     this.registerForm.getError('mismatch') &&
-  //     this.registerForm.get('confirmPassword')?.touched
-  //   );
-  // }
+
+  get passwordMatchError() {
+    return (
+      this.registerForm.getError('mismatch') &&
+      this.registerForm.get('confirmPassword')?.touched
+    );
+  }
 }
 

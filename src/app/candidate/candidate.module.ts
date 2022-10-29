@@ -2,22 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CandidateRoutingModule } from './candidate-routing.module';
+import { CandidateComponent } from './candidate.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    ProfileComponent,
+    CandidateComponent,
+    HeaderComponent,
     FooterComponent,
-    HeaderComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
-    CandidateRoutingModule
+    CandidateRoutingModule,
+    NgModule
   ]
 })
 export class CandidateModule { }

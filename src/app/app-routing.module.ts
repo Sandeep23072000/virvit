@@ -43,6 +43,7 @@ const routes: Routes = [
     component: ChangepasswordComponent,
     path:'Changepassword',
   },
+  { path: 'candidate', loadChildren: () => import('./candidate/candidate.module').then(m => m.CandidateModule) },
  
 ];
 

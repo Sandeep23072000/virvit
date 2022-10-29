@@ -29,6 +29,7 @@ const AppRoutes: Routes =[
   { path:'landingpage3', component: Landingpage3Component},
   { path:'Editprofile', component: EditprofileComponent},
   { path:'Changepassword', component: ChangepasswordComponent},
+
 ];
 @NgModule({
   declarations: [
