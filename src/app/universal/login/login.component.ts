@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TimeService } from '../time.service';
+// import { TimeService } from '../time.service';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators, FormGroupName } from '@angular/forms';
-import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-login',
@@ -23,22 +21,21 @@ export class LoginComponent {
   formBilder: any;
 
   constructor(
+    private router: Router,
     private http: HttpClient,
-    private timeService: TimeService,
+    // private timeService: TimeService,
     private fb: FormBuilder,
 
   ) { }
   ngOnInit(): void {
-
   }
-
   get registerFormControl() {
     return this.checkoutForm.controls;
   }
-
   onSubmit(): void {
     this.submitted = true;
     console.log(this.checkoutForm.value);
+    this.router.navigate(['/candidate']);
 
     if (this.checkoutForm.valid) {
       console.log('Your form has been submitted', this.checkoutForm.value);
@@ -49,8 +46,6 @@ export class LoginComponent {
       console.log('error');
 
     }
-
-
   }
 }
 

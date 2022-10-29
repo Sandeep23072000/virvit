@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms"
-import { TimeService } from '../time.service';
+// import { TimeService } from '../time.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
@@ -35,11 +35,12 @@ export class RegisterComponent {
   submitted = false;
   httpClint: any;
   formBilder: any;
+  router: any;
 
 
 
   constructor(
-    private timeService: TimeService,
+    // private timeService: TimeService,
     private fb: FormBuilder,
     private http: HttpClient,
 
@@ -102,5 +103,6 @@ export class RegisterComponent {
       this.registerForm.get('confirmPassword')?.touched
     );
   }
+  
 }
 

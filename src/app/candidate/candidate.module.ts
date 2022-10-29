@@ -7,6 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     CandidateRoutingModule,
-    NgModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    TooltipModule.forRoot()
   ]
 })
 export class CandidateModule { }

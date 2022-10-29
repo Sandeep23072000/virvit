@@ -22,9 +22,4 @@ export class TimeService {
   })
 
   }
-  // addskill(data: any): Observable<any>{
-  //   return this.http.get(this.url+'/skill/',data).subscribe((data: any)=>{
-  //     console.log(data);
-  //   })
-  // }
 }

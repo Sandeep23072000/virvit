@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TimeService } from '../time.service'; 
 
 @Component({
   selector: 'app-landingpage1',
@@ -8,8 +7,7 @@ import { TimeService } from '../time.service';
 })
 export class Landingpage1Component implements OnInit {
 
-  constructor(private auth:TimeService) { 
-
+  constructor() { 
   }
 
   ngOnInit(): void {

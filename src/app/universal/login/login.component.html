@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ul ngbNav #nav="ngbNav" class="tabs nav-tabs" style="margin-top: 160px;border:none">
     <li ngbNavItem>
         <button class="tabbtn">
@@ -10,13 +11,16 @@
                         <div class="container2 border border-primary rounded-5">
                             <div class="mx-5">
                                 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-                                    <input ngModel type="email" formControlName="username"
+                                    <input ngModel [email]="true" type="email" formControlName="username"
                                         class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         value="" placeholder="Email/Username" required>
                                     <span class="text-danger"
                                         *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
                                         username is required
                                     </span>
+                                    <div class="text-danger" *ngIf="submitted && registerFormControl.username.errors">Email must be a valid
+                                        email address
+                                    </div>
                                     <input ngmodel type="password" formControlName="password"
                                         class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         value="" placeholder="Password" required>
@@ -97,17 +101,17 @@
                                 <input type="text"
                                     class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                     placeholder="Email/Login ID" required>
-                                    <span class="text-danger "
-                                        *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
-                                        Email/Login ID is required
-                                    </span>
+                                <span class="text-danger "
+                                    *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
+                                    Email/Login ID is required
+                                </span>
                                 <input type="text"
                                     class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                     placeholder="Password" required>
-                                    <span class="text-danger"
-                                        *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
-                                        Password is required
-                                    </span>
+                                <span class="text-danger"
+                                    *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
+                                    Password is required
+                                </span>
                                 <div class="form-check mt-2">
                                     <div class=" text-primary mx-5 mt-5 font-weight-bold text-end"> Forgot Password ?
                                     </div>
@@ -136,3 +140,4 @@
 </ul>
 <div [ngbNavOutlet]="nav">
 </div>
+<app-footer></app-footer>

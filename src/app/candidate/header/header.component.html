@@ -1,15 +1,33 @@
 <div class="container-fluid ">
     <div class="row header ">
         <div class="col-5 mt-4">
-            <img src="../assets/virvit_logo.png" alt="logo" style="height:90px; width: 110px; margin-left: 1px; font-weight:dark;">
-            <span  class="heading text-primary fs-5 fw-bold"> <a class="text-decoration-none " routerLink=""> Building Your Dreams</a></span>
+            <img src="../assets/virvit_logo.png" alt="logo"
+                style="height:90px; width: 110px; margin-left: 1px; font-weight:dark;">
+            <span class="heading text-primary fs-5 fw-bold"> <a class="text-decoration-none " routerLink=""> Building
+                    Your Dreams</a></span>
         </div>
         <div class="col-7 righthead text-end">
-            <a class="link is-active text-primary text-decoration-none mx-4 fs-5" routerLink="/Contectus">Contect us</a>
-            <a class=" text-primary text-decoration-none mx-4 fs-5" routerLink="/About">About</a>
-            <button type="button" class="btn  fs-6 mx-3 " routerLink="/Login">Login</button>
-            <button type="button" class="btn  fs-6 mx-3" routerLink="/Register">Register</button>
-        </div><hr class="text-primary fw-bold">
+
+            <!-- <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle px-5 mx-4 fw-bold rounded-4" type="button"
+                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Name
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Edit Profile</a>
+                    <a class="dropdown-item" href="#">Job Applications</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                </div>
+            </div> -->
+            <select class="name rounded-4 text-white py-2 px-3 bg-primary fs-6 mx-5 border-0 fw-bold">
+                <option class="fw-bold text-primary bg-white " value="selected">Name</option>
+                <option class="fw-bold text-primary bg-white" routerLink="/candidate/profile">Edit Profile</option>
+                <option class="fw-bold text-primary bg-white"> Job Applications</option>
+                <option class="fw-bold  text-danger bg-white"> Logout</option>
+            </select>
+
+        </div>
+        <hr class="text-primary fw-bold">
 
     </div>
 </div>
