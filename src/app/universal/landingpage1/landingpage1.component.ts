@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class Landingpage1Component implements OnInit {
 
   constructor() { 
+    localStorage.clear();
   }
 
   ngOnInit(): void {

@@ -25,8 +25,11 @@ export class LoginComponent {
     private http: HttpClient,
     // private timeService: TimeService,
     private fb: FormBuilder,
+    
 
-  ) { }
+  ) {
+    // localStorage.clear();
+   }
   ngOnInit(): void {
   }
   get registerFormControl() {
@@ -34,19 +37,26 @@ export class LoginComponent {
   }
   onSubmit(): void {
     this.submitted = true;
-    console.log(this.checkoutForm.value);
-    this.router.navigate(['/candidate']);
+    if (this.checkoutForm.invalid) {
+      return;
+    }
+    else {
+      this.router.navigate(['/candidate']);
+    }
 
     if (this.checkoutForm.valid) {
       console.log('Your form has been submitted', this.checkoutForm.value);
-      this.http.post('http://https://virvit.mydevpartner.website/vvapi/v1/login/', this.checkoutForm.value).subscribe(data => {
+      this.http.post('https://virvit.mydevpartner.website/vvapi/v1/login/', this.checkoutForm.value).subscribe(data => {
         console.log(data);
-      })
-    } else {
-      console.log('error');
+          if (this.checkoutForm.invalid) {
+            return;
+          }
+          else {
+            console.log('error');
+          }
+          localStorage.setItem("login", JSON.stringify(data));
+        })
 
     }
   }
 }
-
-

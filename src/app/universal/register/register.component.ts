@@ -103,6 +103,9 @@ export class RegisterComponent {
       this.registerForm.get('confirmPassword')?.touched
     );
   }
+  // public saveData(key: string, value: string) {
+  //   localStorage.setItem(key, value);
+  // }
   
 }
 

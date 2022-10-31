@@ -3,31 +3,23 @@
         <div class="col-5 mt-4">
             <img src="../assets/virvit_logo.png" alt="logo"
                 style="height:90px; width: 110px; margin-left: 1px; font-weight:dark;">
-            <span class="heading text-primary fs-5 fw-bold"> <a class="text-decoration-none " routerLink=""> Building
+            <span class="heading text-primary fs-5 fw-bold"> <a class="text-decoration-none " routerLink="/candidate">
+                    Building
                     Your Dreams</a></span>
         </div>
         <div class="col-7 righthead text-end">
-
-            <!-- <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle px-5 mx-4 fw-bold rounded-4" type="button"
-                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Name
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-primary px-4 mx-4 bg-primary text-white"
+                    id="dropdownBasic1" ngbDropdownToggle>
+                    {{ name.fullname }}
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Edit Profile</a>
-                    <a class="dropdown-item" href="#">Job Applications</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="name" ngbDropdownItem routerLink="/candidate/profile">Edit Profile</button>
+                    <button class="name" ngbDropdownItem>Job Applications</button>
+                    <button class="text-danger fw-bold" ngbDropdownItem routerLink="">Logout</button>
                 </div>
-            </div> -->
-            <select class="name rounded-4 text-white py-2 px-3 bg-primary fs-6 mx-5 border-0 fw-bold">
-                <option class="fw-bold text-primary bg-white " value="selected">Name</option>
-                <option class="fw-bold text-primary bg-white" routerLink="/candidate/profile">Edit Profile</option>
-                <option class="fw-bold text-primary bg-white"> Job Applications</option>
-                <option class="fw-bold  text-danger bg-white"> Logout</option>
-            </select>
-
+            </div>
         </div>
         <hr class="text-primary fw-bold">
-
     </div>
 </div>

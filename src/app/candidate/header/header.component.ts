@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  name: any;
+  router: any;
 
-  constructor() { }
+  constructor() { 
+    this.name =JSON.parse( localStorage.getItem("login") || '{}');
+    console.log(typeof  this.name);
+    if (this.name==null){
+      return;
+    }
+    else{
+      this.router.navigate(['/candidate']);
+    }
+
+   
+    
+  }
 
   ngOnInit(): void {
   }
