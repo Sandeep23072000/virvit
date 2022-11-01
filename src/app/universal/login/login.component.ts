@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { TimeService } from '../time.service';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators, FormGroupName } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,13 +22,10 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private http: HttpClient,
-    // private timeService: TimeService,
     private fb: FormBuilder,
-    
 
-  ) {
-    // localStorage.clear();
-   }
+
+  ) { }
   ngOnInit(): void {
   }
   get registerFormControl() {
@@ -40,23 +36,14 @@ export class LoginComponent {
     if (this.checkoutForm.invalid) {
       return;
     }
-    else {
-      this.router.navigate(['/candidate']);
-    }
 
     if (this.checkoutForm.valid) {
       console.log('Your form has been submitted', this.checkoutForm.value);
       this.http.post('https://virvit.mydevpartner.website/vvapi/v1/login/', this.checkoutForm.value).subscribe(data => {
         console.log(data);
-          if (this.checkoutForm.invalid) {
-            return;
-          }
-          else {
-            console.log('error');
-          }
-          localStorage.setItem("login", JSON.stringify(data));
-        })
-
+        this.router.navigate(['/candidate']);
+        localStorage.setItem("login", JSON.stringify(data));
+      })
     }
   }
 }

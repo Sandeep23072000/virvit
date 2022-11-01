@@ -11,7 +11,7 @@
             <div ngbDropdown class="d-inline-block">
                 <button type="button" class="btn btn-outline-primary px-4 mx-4 bg-primary text-white"
                     id="dropdownBasic1" ngbDropdownToggle>
-                    {{ name.fullname }}
+                    {{ name?.fullname }}
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button class="name" ngbDropdownItem routerLink="/candidate/profile">Edit Profile</button>
