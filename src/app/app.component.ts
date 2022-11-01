@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { TimeService } from './time.service';
-
 
 @Component({
   selector: 'app-root',

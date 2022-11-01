@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    PrivacyComponent
   ],
   imports: [
     CommonModule,

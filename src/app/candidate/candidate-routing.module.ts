@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CandidateComponent } from './candidate.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../authgaurd/auth.guard';
 
 const routes: Routes = [
   { path: '',canActivate:[AuthGuard], component: HomeComponent },
-  { path : 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'privacy', component: PrivacyComponent}
 ];
 
 @NgModule({

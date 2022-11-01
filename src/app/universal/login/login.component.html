@@ -24,6 +24,7 @@
                                     <input ngmodel type="password" formControlName="password"
                                         class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         value="" placeholder="Password" required>
+                                        
                                     <span class="text-danger"
                                         *ngIf="submitted && checkoutForm.controls.password.errors?.['required']">
                                         Password is required

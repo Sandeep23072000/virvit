@@ -13,3 +13,6 @@
 .help{
     margin-bottom: 120px;
 }
+div select.salary:hover{
+  color: blue;
+}
