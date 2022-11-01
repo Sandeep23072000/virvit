@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { AuthGuard } from '../authgaurd/auth.guard';
 import { CandidateRoutingModule } from './candidate-routing.module';
 import { CandidateComponent } from './candidate.component';
 import { HeaderComponent } from './header/header.component';

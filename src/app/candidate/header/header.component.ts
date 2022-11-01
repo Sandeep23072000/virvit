@@ -8,18 +8,15 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   name: any;
-  // router: any;
 
   constructor(
       private router: Router
-  ) { 
-    
-  }
+  ) {}
   ngOnInit(): void {
     this.name =JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.name);
-    if (this.name === '{}'){
-      return;
-    }
+    // if (this.name === '{}'){
+    //   return;
+    // }
   }
 }
