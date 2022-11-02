@@ -40,17 +40,19 @@ button.btn:hover{
     margin-top: 100px;
     margin-left: 40px;
 }
-.tabs{
-    margin-left: 450px;
-    border: none;
-    color: white;
-    background-color: white;
+nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color:white;
+    background-color:blue;
 }
-.tabbtn{
-    border-radius: 15px;
-    border-color: blue;
-    padding: 0px 70px;
-    margin-left: 150px;
+nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: blue;
     background-color: white;
+    border-color: blue;
+    border-radius: 15px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-left: 400px;
+    font-weight: bold;
+    font-size: 22px;
 }
 

@@ -1,9 +1,7 @@
 <app-header></app-header>
 <ul ngbNav #nav="ngbNav" class="tabs nav-tabs" style="margin-top: 160px;border:none">
     <li ngbNavItem>
-        <button class="tabbtn">
             <a ngbNavLink>Candidate Signup</a>
-        </button>
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row" style="margin-top: 140px">
@@ -150,15 +148,15 @@
         </ng-template>
     </li>
     <li ngbNavItem>
-        <button class="tabbtn">
             <a ngbNavLink>Employer Signup</a>
-        </button>
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-5 mt-5 border border-primary border-bottom-0  employer">
                         <div class="mx-2">
-                            <p class="text-primary text-center fs-4 mt-4 text-weight-bold">Journey To Find The Right Candidate!</p>
+                            <p class="text-primary text-center fs-4 mt-4 fw-bold">Journey To Find The Right Candidate!
+                            </p>
+                            <p class="text-center fs-5 text-secondary fw-bold">Create your employer's account now </p>
                             <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                                 <input type="text"
                                     class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -182,7 +180,7 @@
                                         *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
                                         Mobile Phone Number is required
                                     </span>
-                                </div> 
+                                </div>
                                 <div>
                                     <input ngModel type="text" formControlName="mobilephonenumber"
                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -191,10 +189,19 @@
                                         *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
                                         Registered Business Name is required
                                     </span>
-                                </div> 
-                                    <div class="d-grid">
-                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Login</button>
-                                    </div>
+                                </div>
+                                <div>
+                                    <p class="para2 fw-bold text-secondary fs-7 mx-3 mt-4">By continuing your
+                                        acknowledgement that you accept
+                                        Virvit's</p>
+                                    <p class="para2 fw-bold text-center text-secondary"> <a
+                                            class="text-decoration-none"> Privacy policies</a> and
+                                        <a class="text-decoration-none"> Terms & Conditions</a>
+                                    </p>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Register</button>
+                                </div>
                             </form>
                         </div>
                     </div>
