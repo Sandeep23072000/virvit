@@ -1,22 +1,16 @@
 <app-header></app-header>
 <div class="row  container-fluid  container2">
-    <div class=" col-3 ">
-        <input type="text" class="form-control form1 mt-5 mx-4 p-2 fs-5 text-center"
-            placeholder="Job Title, Keyword or Company">
+    <div class="col-6">
+        <input type="text" class="form-control w-50 form1 mt-5 p-2 fs-5 text-center"
+            placeholder="Job Title,Skills or Keyword">
     </div>
-    <div class="col-auto">
-        <input type="text" class="form-control mt-5 mx-4 p-2 fs-5 text-center " placeholder="Area, City and Town">
-    </div>
-    <div class="col-auto">
-        <input type="text" class="form-control mt-5 mx-4 p-2 fs-5 mb-5 text-center bg-white "
-            placeholder="All Job Specialization">
-
+    <div class="col-4">
+        <input type="text" class="form-control form2 mt-5 p-2 fs-5 text-center mb-5" placeholder="Area, City and Town">
     </div>
     <div class="col-2 mb-4">
-        <button type="submit" class="btn1 mt-5 mx-4  fs-5 rounded-3 ">Search</button>
+        <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
     </div>
 </div>
-
 <div>
     <h3 class="text-primary mt-5 mx-5">
         Latest Job Openings
@@ -27,8 +21,8 @@
     <div class="row border border rounded-5 mx-5">
         <div class="col-4 mt-3 text-center">
             <p class="para fs-3 mb-0 mt-1 text-danger">Welcom  {{name?.fullname}}</p><br>
-            <a class="updpro mx-3 " href="#">Update Profile</a>
-            <span><a class="viewpro " href="#">View Profile</a></span>
+            <a class="updpro mx-3 ">Update Profile</a>
+            <span><a class="viewpro" routerLink="/candidate/profile">View Profile</a></span>
         </div>
         <div class="col-7 mx-5 mb-5">
             <div class="row mt-4">

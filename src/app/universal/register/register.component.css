@@ -1,3 +1,16 @@
+.tabs{
+    margin-left: 450px;
+    border: none;
+    color: white;
+    background-color: white;
+}
+.tabbtn{
+    border-radius: 15px;
+    border-color: blue;
+    padding: 0px 70px;
+    margin-left: 150px;
+    background-color: white;
+}
 .btn1{
     border-radius: 8px;
     background-color: blue;
@@ -22,5 +35,47 @@ button.btn1:hover{
     font-family: "Font Awesome";
     font-weight: 900;
 }
+button.btn:hover{
+    background-color: white;
+    color: blue;
+}
+.btn{
+    color:white;
+}
+.container1{
+    margin-right: 55px;
+}
+.img1{
+    margin-left: 150px;
+}
+.img-1{
+    margin-left: 150px;
+    height: 500px;
+    width: 800px;
+    margin-bottom: 20px;
+}
 
+.container2{
+    height: 400px;
+    width: 700px;
+    margin-left: 80px;
+    margin-top: 100px;
+
+}
+.span{
+    margin-left: 230px;
+}
+.employer{
+     height: 600px;
+     width: 600px;
+     border-bottom: none;
+     margin-left: 80px;
+     border-radius: 60px;
+}
+.image{
+   width: 80%;
+   height: 80%;
+   margin-top: 40px;
+   margin-left: 250px;
+}
     

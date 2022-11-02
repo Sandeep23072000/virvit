@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    show=false;
+    show2=false;
+    
+    showdiv(){
+      this.show = !this.show;
+      this.show2 = !this.show2;  
+    }
+    ngOnInit(): void {
+      
+    }
 }

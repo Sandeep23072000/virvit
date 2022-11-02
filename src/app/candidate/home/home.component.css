@@ -12,23 +12,24 @@ button.btn:hover{
     border-color: blue;
 }
 .btn1 {
-    padding-right: 4rem;
-    padding-left: 4rem;
-    background-color: blue;
-    color: white;
-}
-.btn1:hover {
+    padding-right: 4.5rem;
+    padding-left: 4.5rem;
     background-color: white;
     color: blue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: blue;
+}
+
+.btn1:hover {
+    background-color: blue;
+    color: white;
     border-color: blue;
 }
 div.container2{
     background:linear-gradient(to right, blue,lightblue);
     margin-top: 140px;
 }
-
-@media (max-width: 767px){.carousel-inner .carousel-item >div{display: none}.carousel-inner .carousel-item >div:first-child{display: block}}.carousel-inner .carousel-item.active, .carousel-inner .carousel-item-next, .carousel-inner .carousel-item-prev{display: flex}@media (min-width: 768px){.carousel-inner .carousel-item-end.active, .carousel-inner .carousel-item-next{transform: translateX(25%)}.carousel-inner .carousel-item-start.active, .carousel-inner .carousel-item-prev{transform: translateX(-25%)}}.carousel-inner .carousel-item-end, .carousel-inner .carousel-item-start{transform: translateX(0)}
-
 .card{
     cursor: pointer;
     width: 300px;
@@ -37,4 +38,10 @@ div.container2{
 .card:hover{
     border-color: blue;
     transform: scale(1.05);
+}
+.form1 {
+    margin-left: 280px;
+}
+.form2 {
+    width: 75%;
 }

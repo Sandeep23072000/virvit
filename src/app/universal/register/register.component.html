@@ -1,138 +1,211 @@
 <app-header></app-header>
-<div class="container-fluid">
-    <div class="row" style="margin-top: 140px">
-        <div class="col-4">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                <div class="form mx-5">
-                    <input ngModel type="text" formControlName="firstname"
-                        class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                        placeholder="First Name" required>
-                    <span class="text-danger" *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
-                        first name is required
-                    </span>
-                    <input ngModel type="text" formControlName="lastname"
-                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                        placeholder="Last Name" required>
-                    <span class="text-danger" *ngIf="submitted && registerForm.controls.lastname.errors?.['required']">
-                        Last Name is required
-                    </span>
-                    <input ngModel [email]="true" type="email" formControlName="email"
-                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                        placeholder="Email" required>
-                <div> <span class="text-danger" *ngIf="submitted && registerForm.controls.email.errors?.['required']">
-                        email is required
-                    </span>
-                    <div class="text-danger" *ngIf="submitted && signupFormControl.email.errors">Email must be a valid
-                        email address
-                    </div>
-                </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <select formControlName="gender"
-                                class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                required>
-                                <option value="">Gender</option>
-                                <option value="Male">male</option>
-                                <option value="Female">female</option>
-                            </select>
-                            <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.gender.errors?.['required']">
-                                Gender is required
-                            </span>
-                        </div>
-                        <div class="col-6">
-                            <input ngModel formControlName="birthdate" type="date"
-                                class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                placeholder="Date of Birth" required>
-                            <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.birthdate.errors?.['required']">
-                                Date of Birth is required
-                            </span>
-                        </div>
-                        <div>
-                            <input ngModel type="text" formControlName="mobilephonenumber"
-                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                        placeholder="Mobile Phone Number" required>
-                    <span class="text-danger" *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
-                        Mobile Phone Number is required
-                    </span>
-                        </div>
-                        <select formControlName="skill"
-                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                            required>
-                            <option value="">Skills</option>
-                            <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}} </option>
-                        </select>
-                        <span class="text-danger" *ngIf="submitted && registerForm.controls.skill.errors?.['required']">
-                            Skills is required
-                        </span>
-                        <select formControlName="jobpreference" Name="preference"
-                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                            required>
-                            <option value="">Job Preference</option>
-                            <option *ngFor="let preference of preferencelist" [value]="preference.id">
-                                {{preference.name}}</option>
-                        </select>
-                        <span class=" text-danger"
-                            *ngIf="submitted && registerForm.controls.jobpreference.errors?.['required']">
-                            Job preference is required
-                        </span>
-                        <input formControlName="startofwork" type="date"
-                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                            required>
-                        <span class="text-danger"
-                            *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
-                            Start of work is required
-                        </span>
-                        <div>
-                            <input ngModel formControlName="resume" type="file"
-                                class="form-control  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                placeholder="Upload Resume">
-                            <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.resume.errors?.['required']">
-                                Upload Resume is required
-                            </span>
-                        </div>
-                        <div>
-                            <input ngModel formControlName="password" type="password"
-                                class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                                placeholder="Password" required>
-                            <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.password.errors?.['required']">
-                                password is required
-                            </span>
-                           
-                            <input ngModel formControlName="confirmpassword" type="password"
-                                class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                placeholder="Confirm Password" required>
-                            <span class="text-danger"
-                                *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
-                                confirm password is required
-                            </span>
-                            <!-- <div *ngIf="registerForm.get('passwordMismatchError').errors?.passwordMatch">
+<ul ngbNav #nav="ngbNav" class="tabs nav-tabs" style="margin-top: 160px;border:none">
+    <li ngbNavItem>
+        <button class="tabbtn">
+            <a ngbNavLink>Candidate Signup</a>
+        </button>
+        <ng-template ngbNavContent>
+            <div class="container-fluid">
+                <div class="row" style="margin-top: 140px">
+                    <div class="col-4">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div class="form mx-5">
+                                <input ngModel type="text" formControlName="firstname"
+                                    class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="First Name" required>
+                                <span class="text-danger"
+                                    *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                                    First Name is required
+                                </span>
+                                <input ngModel type="text" formControlName="lastname"
+                                    class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Last Name" required>
+                                <span class="text-danger"
+                                    *ngIf="submitted && registerForm.controls.lastname.errors?.['required']">
+                                    Last Name is required
+                                </span>
+                                <input ngModel [email]="true" type="email" formControlName="email"
+                                    class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Email" required>
+                                <div> <span class="text-danger"
+                                        *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                        email is required
+                                    </span>
+                                    <div class="text-danger" *ngIf="submitted && signupFormControl.email.errors">Email
+                                        must be a valid
+                                        email address
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select formControlName="gender"
+                                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            required>
+                                            <option value="">Gender</option>
+                                            <option value="Male">male</option>
+                                            <option value="Female">female</option>
+                                        </select>
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.gender.errors?.['required']">
+                                            Gender is required
+                                        </span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input ngModel formControlName="birthdate" type="date"
+                                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            placeholder="Date of Birth" required>
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.birthdate.errors?.['required']">
+                                            Date of Birth is required
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <input ngModel type="text" formControlName="mobilephonenumber"
+                                            class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            placeholder="Mobile Phone Number" required>
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
+                                            Mobile Phone Number is required
+                                        </span>
+                                    </div>
+                                    <select formControlName="skill"
+                                        class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        required>
+                                        <option value="">Skills</option>
+                                        <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}}
+                                        </option>
+                                    </select>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && registerForm.controls.skill.errors?.['required']">
+                                        Skills is required
+                                    </span>
+                                    <select formControlName="jobpreference" Name="preference"
+                                        class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        required>
+                                        <option value="">Job Preference</option>
+                                        <option *ngFor="let preference of preferencelist" [value]="preference.id">
+                                            {{preference.name}}</option>
+                                    </select>
+                                    <span class=" text-danger"
+                                        *ngIf="submitted && registerForm.controls.jobpreference.errors?.['required']">
+                                        Job preference is required
+                                    </span>
+                                    <input formControlName="startofwork" type="date"
+                                        class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
+                                        Start of work is required
+                                    </span>
+                                    <div>
+                                        <input ngModel formControlName="resume" type="file"
+                                            class="form-control  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            placeholder="Upload Resume">
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.resume.errors?.['required']">
+                                            Upload Resume is required
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <input ngModel formControlName="password" type="password"
+                                            class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                            placeholder="Password" required>
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.password.errors?.['required']">
+                                            password is required
+                                        </span>
+
+                                        <input ngModel formControlName="confirmpassword" type="password"
+                                            class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            placeholder="Confirm Password" required>
+                                        <span class="text-danger"
+                                            *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
+                                            confirm password is required
+                                        </span>
+                                        <!-- <div *ngIf="registerForm.get('passwordMismatchError').errors?.passwordMatch">
                                 Passsword and  Confirm Password didn't match. 
                             </div> -->
-                        </div>
+                                    </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn1" data-tongle="button">Register</button>
-                        </div>
-                        <div class="para">
-                            <p class="text-center">By continuing your acknowledgement that you accept Virvit's <a
-                                    class="text-decoration-none " href="#"> Privacy policies</a> and <a
-                                    class="text-decoration-none" href="#"> Terms & Conditions</a>
-                            </p>
-                        </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn1" data-tongle="button">Register</button>
+                                    </div>
+                                    <div class="para">
+                                        <p class="text-center">By continuing your acknowledgement that you accept
+                                            Virvit's <a class="text-decoration-none " href="#"> Privacy policies</a> and
+                                            <a class="text-decoration-none" href="#"> Terms & Conditions</a>
+                                        </p>
+                                    </div>
 
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-8">
+                        <img src="../assets/Candidate_Registration.png" alt="candidate"
+                            style=" width: 735px;margin: 70px 200px;">
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="col-8">
-            <img src="../assets/Candidate_Registration.png" alt="candidate" style=" width: 735px;margin: 70px 200px;">
-        </div>
-
-
-    </div>
+            </div>
+        </ng-template>
+    </li>
+    <li ngbNavItem>
+        <button class="tabbtn">
+            <a ngbNavLink>Employer Signup</a>
+        </button>
+        <ng-template ngbNavContent>
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-5 mt-5 border border-primary border-bottom-0  employer">
+                        <div class="mx-2">
+                            <p class="text-primary text-center fs-4 mt-4 text-weight-bold">Journey To Find The Right Candidate!</p>
+                            <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <input type="text"
+                                    class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Email/Login ID" required>
+                                <span class="text-danger "
+                                    *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                    Email/Login ID is required
+                                </span>
+                                <input type="text"
+                                    class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    placeholder="Contact Person Names" required>
+                                <span class="text-danger"
+                                    *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                                    Contect Person Name is required
+                                </span>
+                                <div>
+                                    <input ngModel type="text" formControlName="mobilephonenumber"
+                                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        placeholder="Mobile Phone Number" required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
+                                        Mobile Phone Number is required
+                                    </span>
+                                </div> 
+                                <div>
+                                    <input ngModel type="text" formControlName="mobilephonenumber"
+                                        class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        placeholder="Registered Business Name" required>
+                                    <span class="text-danger"
+                                        *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                                        Registered Business Name is required
+                                    </span>
+                                </div> 
+                                    <div class="d-grid">
+                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Login</button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <img class="image" src="./assets/employer_signup.png" alt="hiring-process2">
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav">
 </div>
 <app-footer></app-footer>
