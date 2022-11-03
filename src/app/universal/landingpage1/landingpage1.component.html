@@ -1,20 +1,49 @@
 <app-header></app-header>
-<div class="row  container-fluid  container2">
-    <div class="col-6">
-        <input type="text" class="form-control w-50 form1 mt-5 p-2 fs-5 text-center"
-            placeholder="Job Title,Skills or Keyword">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="row  container-fluid  container2">
+        <div class="col-6">
+            <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-2 fs-5 text-center"
+                placeholder="Job Title,Skills or Keyword" required>
+        </div>
+        <div class="col-4">
+            <input ngForm formControlName="area" type="text" class="form-control form2 mt-5 p-2 fs-5 text-center mb-5"
+                placeholder="Area, City and Town" required>
+        </div>
+        <div class="col-2 mb-4">
+            <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
+        </div>
     </div>
-    <div class="col-4">
-        <input type="text" class="form-control form2 mt-5 p-2 fs-5 text-center mb-5" placeholder="Area, City and Town">
-    </div>
-    <div class="col-2 mb-4">
-        <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
-    </div>
-</div>
+</form>
 <div>
     <h3 class="text-primary mt-5 mx-5">
         Latest Job Openings
     </h3>
+</div>
+<div class="mx-5 mt-3" *ngFor="let item of searchkey">
+    <div class="container-fluid w-50 border border-primary rounded-4 mx-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="mx-3 fw-bold fs-4 mt-2 text-primary">
+                    Webtechnology
+                </div>
+                <div class="mx-3 mt-2 fw-bold text-primary">
+                    {{item.title}}
+                </div>
+                <div class="text-secondary mt-1 mx-3 mb-2">
+                    {{item.experiance_from}} - {{item.experiance_to}}  years Experience
+                </div>
+                <div class="text-secondary mt-1 mx-3 mb-2">
+                    SGD - {{item.min_salary}} - {{item.max_salary}}
+                </div>
+            </div>
+            <div class="col-3">
+                <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"routerLink="/login">Apply</button>
+            </div>
+            <div class="col-3">
+                <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4" routerLink="/login">Save</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <ngb-carousel>
@@ -77,10 +106,18 @@
                 </div>
             </div>
         </div>
+        <button type="button" class="carousel-control-next text-primary">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="visually-hidden"></span>
+        </button>
     </ng-template>
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
             <div class="carousel-inner mt-5 mb-5">
+                <button type="button" class="carousel-control-prev text-primary">
+                    <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden"></span>
+                </button>
                 <div class="carousel-item active d-flux m-2">
                     <div class="card rounded-5 p-3  mx-5">
                         <h6 class="text-primary mt-3 mb-3">App Developer</h6>
@@ -112,6 +149,10 @@
                 </div>
             </div>
         </div>
+        <button type="button" class="carousel-control-next text-primary">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="visually-hidden"></span>
+        </button>
     </ng-template>
 </ngb-carousel>
 <app-footer></app-footer>

@@ -1,10 +1,10 @@
 <app-header></app-header>
 <ul ngbNav #nav="ngbNav" class="tabs nav-tabs" style="margin-top: 160px;border:none">
     <li ngbNavItem>
-            <a ngbNavLink>Candidate Signup</a>
+        <a ngbNavLink>Candidate Signup</a>
         <ng-template ngbNavContent>
             <div class="container-fluid">
-                <div class="row" style="margin-top: 140px">
+                <div class="row" style="margin: top 60px;">
                     <div class="col-4">
                         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                             <div class="form mx-5">
@@ -120,9 +120,10 @@
                                             *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
                                             confirm password is required
                                         </span>
-                                        <!-- <div *ngIf="registerForm.get('passwordMismatchError').errors?.passwordMatch">
-                                Passsword and  Confirm Password didn't match. 
-                            </div> -->
+                                        <div
+                                            *ngIf="registerForm.errors?.['passwordMismatchError'] && getControl('confirmpassword')?.touched">
+                                            Passsword and Confirm Password didn't match.
+                                        </div>
                                     </div>
 
                                     <div class="text-center">
@@ -148,7 +149,7 @@
         </ng-template>
     </li>
     <li ngbNavItem>
-            <a ngbNavLink>Employer Signup</a>
+        <a ngbNavLink>Employer Signup</a>
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row mt-5">

@@ -28,9 +28,6 @@ export class RegisterComponent {
     confirmpassword: ['', Validators.required],
     resume: ['', Validators.required],
     device_id: '1',
-
-
-
   });
   submitted = false;
   httpClint: any;
@@ -67,10 +64,11 @@ export class RegisterComponent {
 
   get signupFormControl() {
     return this.registerForm.controls;
-    function passwordMatch(password: any, confirm_password: any) {
+  
+    function passwordMatch(password: any, confirmpassword: any) {
       return function (form: AbstractControl) {
         const passwordvalue = form.get(password)?.value
-        const confirmPasswordValue = form.get(confirm_password)?.value
+        const confirmPasswordValue = form.get(confirmpassword)?.value
 
         if (passwordvalue === confirmPasswordValue) {
           return null;
@@ -106,6 +104,6 @@ export class RegisterComponent {
   // public saveData(key: string, value: string) {
   //   localStorage.setItem(key, value);
   // }
-  
+
 }
 
