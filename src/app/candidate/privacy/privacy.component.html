@@ -15,14 +15,14 @@
                     <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5" (click)=showdiv()>Change Password</button>
                 </div> 
             </div>
-            <div *ngIf="show2">
+            <div *ngIf="show2" [hidden]="show3">
                 <h4 class="text-primary mt-5">Change password</h4>
                 <form class="form">
                     <input class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0" type="text" placeholder="New Password       -   ************"><br>
                     <input class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0" type="text" placeholder="Confirm Password       -   ************">
                 </form>
                 <div class="mx-5">
-                    <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5">Submit</button>
+                    <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5" (click)=showdiv2()>Submit</button>
                 </div>
             </div>
         </div>
