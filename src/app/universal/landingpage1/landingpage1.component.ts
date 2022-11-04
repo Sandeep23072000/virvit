@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators, AbstractControl } from '@angular/forms';
-import { FormGroup, FormsModule, ReactiveFormsModule,FormControl } from '@angular/forms';
+import { FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule,FormControl, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-landingpage1',
@@ -14,32 +14,36 @@ export class Landingpage1Component {
   httpClint: any;
   searchkey: any;
   item: any;
+  submitted: boolean=false;
   constructor(
     private fb : FormBuilder,
     private http : HttpClient
 
    ) {
     this.searchForm = this.fb.group({
-      title:'',
-      area: ''
+      title: ['', Validators.compose([Validators.required])],
+      area: ['', Validators.compose([Validators.required])],
     });
   }
-  // this.title();
-  // console.log(this.title);
 
   onSubmit(){
+    this.submitted = true;
+    if (this.searchForm.invalid) {
+      return;
+    }
+    if(this.searchForm.valid)
     this.searchForm.value;
     console.log(this.searchForm.value); 
     this.http.post('https://virvit.mydevpartner.website/vvapi/v1/job-filter/', this.searchForm.value).subscribe(data => {
         console.log(data);
-
         // this.searchForm.reset();
         localStorage.setItem("search", JSON.stringify(data));
   });
   this.searchkey =JSON.parse(localStorage.getItem("search") || '{}');
   console.log(this.searchkey);
-  // ngOnInit(): void {
-  //   localStorage.clear();
-  // }
+}
+ show=false;
+ showdiv(){
+  this.show = !this.show;  
 }
 }

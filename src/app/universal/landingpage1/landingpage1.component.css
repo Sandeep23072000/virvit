@@ -40,6 +40,7 @@ button.btn:hover {
 div.container2 {
     background: linear-gradient(to right, blue, lightblue);
     margin-top: 140px;
+    height:170px ;
 }
 
 @media (max-width: 767px) {
@@ -90,10 +91,13 @@ span.carousel-control-prev-icon{
     color: blue;
 }
 span.carousel-control-prev-icon{
-   background-color: blue;
+   background-color: rgb(92, 92, 237);
    height: 60px;
 }
  span.carousel-control-next-icon{
-    background-color: blue;
+    background-color: rgb(92, 92, 237);
     height: 60px;
+}
+.valid{
+    margin-left: 280px;
 }
