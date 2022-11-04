@@ -24,7 +24,6 @@ export class LoginComponent {
     private http: HttpClient,
     private fb: FormBuilder,
 
-
   ) { }
   ngOnInit(): void {
   }
