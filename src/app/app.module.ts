@@ -8,6 +8,9 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TimeService } from './time.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -23,9 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
     TooltipModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule
    
   ],
+  exports: [
+    MatIconModule
+    ],
   providers: [TimeService],
   bootstrap: [AppComponent]
 })

@@ -11,6 +11,7 @@ import { FormGroup, ReactiveFormsModule, FormArrayName } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    MatIconModule
   ]
 })
 export class CandidateModule { }
