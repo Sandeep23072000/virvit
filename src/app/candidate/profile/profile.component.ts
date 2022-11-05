@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  name: any;
+  namevalue: any;
   profileForm: FormGroup;
 
   constructor(
@@ -15,6 +15,7 @@ export class ProfileComponent {
     this.profileForm = this.fb.group({
       name: '',
       mobile: '',
+      email : '',
       designation: '',
       aboutme: '',
       gender: '',
@@ -52,8 +53,8 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
-    this.name = JSON.parse(localStorage.getItem("login") || '{}');
-    console.log(this.name);
+    this.namevalue = JSON.parse(localStorage.getItem("login") || '{}');
+    console.log(this.namevalue);
   }
 
   workexperience(): FormArray {

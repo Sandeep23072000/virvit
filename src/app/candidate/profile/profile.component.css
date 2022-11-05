@@ -1,3 +1,6 @@
+.fullform{
+    overflow-x: hidden;
+}
 .image{
     width: 180px;
     height: 180px;
@@ -12,7 +15,11 @@
 }
 .help{
     margin-bottom: 120px;
+    margin-left: 1035px;
 }
 div select.salary:hover{
   color: blue;
+}
+.container5{
+    margin-top: 35px;
 }

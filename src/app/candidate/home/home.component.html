@@ -1,22 +1,32 @@
 <app-header></app-header>
-<div class="row  container-fluid  container2">
-    <div class="col-6">
-        <input type="text" class="form-control w-50 form1 mt-5 p-2 fs-5 text-center"
-            placeholder="Job Title,Skills or Keyword">
+<form [formGroup]="search2Form" (ngSubmit)="onSubmit()">
+    <div class="row  container-fluid  container2">
+        <div class="col-6">
+            <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-2 fs-5 text-center"
+                value="" placeholder="Job Title,Skills or Keyword" required>
+                <span class="valid text-danger fs-5"
+                     *ngIf="submitted && search2Form.controls['title'].errors?.['required']">
+                        Job Title,Skills or Keyword is required
+                </span>
+        </div>
+        <div class="col-4">
+            <input ngForm formControlName="area" type="text" class="form-control form2 mt-5 p-2 fs-5 text-center"
+                value="" placeholder="Area, City and Town" required>
+                <span class="fs-5 text-danger"
+                *ngIf="submitted && search2Form.controls['area'].errors?.['required']">
+                   Area, City and Town is required
+            </span>
+        </div>
+        <div class="col-2 mb-4">
+            <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
+        </div>
     </div>
-    <div class="col-4">
-        <input type="text" class="form-control form2 mt-5 p-2 fs-5 text-center mb-5" placeholder="Area, City and Town">
-    </div>
-    <div class="col-2 mb-4">
-        <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
-    </div>
-</div>
+</form>
 <div>
     <h3 class="text-primary mt-5 mx-5">
         Latest Job Openings
     </h3>
 </div>
-
 <div class="container-fluid mt-4">
     <div class="row border border-primary rounded-5 mx-5">
         <div class="col-4 mt-3 text-center">
@@ -39,5 +49,33 @@
         </div>
 
     </div>
+</div>
+<div>
+    <div class="mx-5 mt-5" *ngFor="let item of searchkey">
+        <div class="container-fluid w-50 border border-primary rounded-4 mx-3">
+            <div> <div class="row">
+                <div class="col-6">
+                    <div class="mx-3 fw-bold fs-4 mt-2 text-primary">
+                        Webtechnology
+                    </div>
+                    <div class="mx-3 mt-2 fw-bold text-primary">
+                        {{item.title}}
+                    </div>
+                    <div class="text-secondary mt-1 mx-3 mb-2">
+                        {{item.experiance_from}} - {{item.experiance_to}}  years Experience
+                    </div>
+                    <div class="text-secondary mt-1 mx-3 mb-2">
+                        SGD - {{item.min_salary}} - {{item.max_salary}}
+                    </div>
+            </div>
+            <div class="col-3">
+                <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"routerLink="/login">Apply</button>
+            </div>
+            <div class="col-3">
+                <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4" routerLink="/login">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <app-footer></app-footer>

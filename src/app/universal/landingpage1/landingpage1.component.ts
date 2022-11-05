@@ -36,7 +36,6 @@ export class Landingpage1Component {
     console.log(this.searchForm.value); 
     this.http.post('https://virvit.mydevpartner.website/vvapi/v1/job-filter/', this.searchForm.value).subscribe(data => {
         console.log(data);
-        // this.searchForm.reset();
         localStorage.setItem("search", JSON.stringify(data));
   });
   this.searchkey =JSON.parse(localStorage.getItem("search") || '{}');
