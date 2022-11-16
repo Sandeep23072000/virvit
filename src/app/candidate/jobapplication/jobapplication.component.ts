@@ -8,29 +8,36 @@ import { TimeService } from 'src/app/time.service';
   styleUrls: ['./jobapplication.component.css']
 })
 export class JobapplicationComponent {
-  searchkey: any;
+  applykey: any;
   http: any;
+  loginkey: any;
+  searchkey: any;
+  apply2: any;
 
   constructor(
     private httpClient: HttpClient,
     private timeService: TimeService,
   ) {
-    this.searchkey = JSON.parse(localStorage.getItem("login") || '{}');
-    console.log(this.searchkey);
+    this.loginkey = JSON.parse(localStorage.getItem("login") || '{}');
+    console.log(this.loginkey);
+    
+
 
     // this.timeService.getapi('apply-job/?user=' +).subscribe(data => {
     //   console.log(data);
     // });
-    this.apply(this.searchkey);
+    this.apply(this.loginkey);
   }
   apply(data: any) {
-    this.timeService.getapi('apply-job/?user=' + data.id).subscribe(data => {
-      console.log(data);
+    this.timeService.getapi('apply-job/?user=' + data.id).subscribe(response => {
+      console.log(response);
+      this.apply2 = response.results;
     });
+    
   }
 
   save(data: any) {
-    this.timeService.getapi('bookmark-job/?user=' + data.id).subscribe(data => {
+    this.timeService.getapi('bookmark-job/?user=' + this.loginkey.id).subscribe(data => {
       console.log(data);
     });
   }
