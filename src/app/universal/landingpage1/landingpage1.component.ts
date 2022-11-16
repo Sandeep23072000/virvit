@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { FormGroup, FormsModule, ReactiveFormsModule,FormControl, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-landingpage1',
   templateUrl: './landingpage1.component.html',

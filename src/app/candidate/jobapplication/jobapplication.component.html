@@ -1,0 +1,39 @@
+<app-header></app-header>
+<ul ngbNav #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
+    <li ngbNavItem>
+        <a ngbNavLink class="pt-3 pb-3">Applied Jobs</a>
+        <ng-template ngbNavContent>
+            <div class="mx-5 mt-5" *ngFor="let item of searchkey">
+                <div class="container-fluid w-100 border border-primary rounded-4 mx-3">
+                    <div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mx-3 fw-bold fs-4 mt-2 text-primary">
+                                    Webtechnology
+                                </div>
+                                <div class="mx-3 mt-2 fw-bold text-primary">
+                                    {{item.title}}
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    {{item.experiance_from}} - {{item.experiance_to}} years Experience
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    SGD - {{item.min_salary}} - {{item.max_salary}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ng-template>
+    </li>
+    <li ngbNavItem>
+        <a ngbNavLink class="pt-3 pb-3">Saved Jobs</a>
+        <ng-template ngbNavContent>
+
+        </ng-template>
+    </li>
+</ul>
+<app-footer></app-footer>

@@ -7,11 +7,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, ReactiveFormsModule, FormArrayName } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { MatIconModule } from '@angular/material/icon';
+import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     FooterComponent,
     HomeComponent,
     ProfileComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    JobapplicationComponent
   ],
   imports: [
     CommonModule,

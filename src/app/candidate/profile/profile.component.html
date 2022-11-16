@@ -7,19 +7,19 @@
                 Setting</button>
         </div>
         <div class="col-10">
-            <form [formGroup]="profileForm">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-9">
                         <div class="form">
                             <input type="text" formControlName="name"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                value={{namevalue.fullname}}>
+                                value="" placeholder="Full Name">
                             <input type="text" formControlName="mobile"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                value={{namevalue.mobile}}>
-                                <input type="email" formControlName="email"
+                                value="" placeholder="Phone">
+                            <input type="email" formControlName="email"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                value={{namevalue.email}}>
+                                value="" placeholder="Email">
                             <input type="text" formControlName="designation"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 placeholder="Designation">
@@ -42,8 +42,8 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <input type="date" formControlName="dateofbirth" value={{namevalue.dob}}
-                                    class="form-select  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
+                                <input type="date" formControlName="dateofbirth" id="birthdate" value=""
+                                    class="form-select mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                 <select
                                     class="form-select mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                     <option>{{namevalue.employment_status}}</option>
@@ -56,7 +56,7 @@
                                     <div class="col-6">
                                         <input formControlName="salary"
                                             class="form-select mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                            value="{{namevalue.salary}}">
+                                            value="">
                                     </div>
                                     <div class="col-6">
                                         <select class=" mt-4 px-5 py-2 shadow-none border rounded-3">
@@ -73,23 +73,24 @@
 
                     <div class="col-3">
                         <div>
-                            <img class="image rounded-circle mb-3" src="./assets/hiring-process2.png" alt="Profile">
+                            <img class="image rounded-circle mb-4" src="./assets/hiring-process2.png" alt="Profile">
                         </div>
                         <div>
-                            <a class="edit text-decoration-none" href="#">Edit Profile</a>
+                            <button class=" btn5 text-white bg-primary rounded-4 fs-6 py-2 px-5 border border-none"
+                                type="submit">Save</button>
                         </div>
                     </div>
 
-                    <input type="text" formControlName="aboutme"
+                    <input type="text"
                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                        placeholder="About me">
+                        value="" placeholder="About me">
 
 
                     <div class="row">
                         <div class="col-6">
                             <div class="border border-primary rounded-3 mt-4">
                                 <div class="mx-5 mb-4">
-                                    <p class=" mt-4">
+                                    <p class=" mt-4 fs-6">
                                         Education
                                         <span class="d-flex justify-content-end">
                                             <mat-icon class="text-primary fs-5" aria-hidden="false"
@@ -156,8 +157,7 @@
                             </select>
                             <div class="container border border-primary rounded-3 mt-5">
                                 <div class="pt-3 pb-3">
-                                    <input type="file" formControlName="videoresume" id="video"
-                                        class="form-control d-none text-center mt-5 ">
+                                    <input type="file" id="video" class="form-control d-none text-center mt-5 ">
                                     <label class="text-primary d-flex justify-content-center mb-4 mt-3"
                                         for="video">Video Resume
                                         <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"
@@ -170,7 +170,7 @@
                         <div class="col-6">
                             <div class="border border-primary rounded-3 mt-4 mb-5">
                                 <div class="mx-5">
-                                    <p class=" mt-4">
+                                    <p class=" mt-4 fs-6">
                                         Work Experience
                                         <span class="d-flex justify-content-end">
                                             <mat-icon class="text-primary fs-5" aria-hidden="false"
@@ -225,8 +225,7 @@
                             </div>
                             <div class="container border border-primary rounded-3 mt-4">
                                 <div class="pt-3 pb-3">
-                                    <input type="file" formControlName="uploadresume" id="resume"
-                                        class="form-control d-none text-center mt-5 ">
+                                    <input type="file" id="resume" class="form-control d-none text-center mt-5 ">
                                     <label class="text-primary d-flex justify-content-center mb-4 mt-3"
                                         for="resume">Upload Resume Here
                                         <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"
@@ -236,8 +235,7 @@
                             </div>
                             <div class="container5 border border-primary rounded-3">
                                 <div class="pt-3 pb-3">
-                                    <input type="file" formControlName="videotestimonial" id="testimonial"
-                                        class="form-control d-none text-center mt-5">
+                                    <input type="file" id="testimonial" class="form-control d-none text-center mt-5">
                                     <label class="text-primary d-flex justify-content-center mb-4 mt-3"
                                         for="testimonial">Video Testimonial
                                         <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"

@@ -96,9 +96,13 @@
                                         Start of work is required
                                     </span>
                                     <div>
-                                        <input ngModel formControlName="resume" type="file"
-                                            class="form-control  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        <input ngModel formControlName="resume" type="file" id="resume"
+                                            class="form-control d-none  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                             placeholder="Upload Resume">
+                                        <label class=" mt-4 Upload Resume" for="resume">Upload Resume
+                                            <mat-icon class="fs-5 mx-5 text-primary" aria-hidden="false"
+                                                aria-label="Example icon" fontIcon="upload"></mat-icon>
+                                        </label>
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.resume.errors?.['required']">
                                             Upload Resume is required

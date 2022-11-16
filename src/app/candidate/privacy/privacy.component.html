@@ -2,33 +2,47 @@
 <div class="container-fluid" style="margin-top: 150px;">
     <div class="row">
         <div class="col-2 ">
-            <button class="shadow px-4 btn bg-white text-primary mt-4" type="button" routerLink="/candidate/profile">Edit Profile</button><br>
+            <button class="shadow px-4 btn bg-white text-primary mt-4" type="button"
+                routerLink="/candidate/profile">Edit Profile</button><br>
             <button class="btn bg-primary text-white mt-4">Privacy Setting</button>
         </div>
-        <div class="col-4">
-            <div [hidden]="show">
-                <form class="form">
-                <input class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                    type="text" placeholder="Current Password    -   ************">
-                </form>
-                <div class="mx-5">
-                    <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5" (click)=showdiv()>Change Password</button>
-                </div> 
-            </div>
-            <div *ngIf="show2" [hidden]="show3">
-                <h4 class="text-primary mt-5">Change password</h4>
-                <form class="form">
-                    <input class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0" type="text" placeholder="New Password       -   ************"><br>
-                    <input class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0" type="text" placeholder="Confirm Password       -   ************">
-                </form>
-                <div class="mx-5">
-                    <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5" (click)=showdiv2()>Submit</button>
+        <div class="col-10">
+            <form [formGroup]="privacyForm">
+                <div class="row">
+                    <div class="col-4">
+                        <div [hidden]="show">
+                            <div class="form">
+                                <input formControlName="old_password"
+                                    class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    type="text" placeholder="Current Password    -   ************">
+                            </div>
+                            <div class="mx-5">
+                                <button type="button" class="btn btn-primary bg-primary text-white px-5 mt-5"
+                                    (click)=showdiv()>Change Password</button>
+                            </div>
+                        </div>
+                        <div *ngIf="show2">
+                            <h4 class="text-primary mt-5">Change password</h4>
+                            <div class="form">
+                                <input formControlName="new_password"
+                                    class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    type="text" placeholder="New Password       -   ************"><br>
+                                <input formcontrolname="confirmpassword"
+                                    class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    type="text" placeholder="Confirm Password    -   ************">
+                            </div>
+                            <div class="mx-5">
+                                <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5"
+                                    (click)="onSubmit()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 footer">
+                        <img class="image" src="./assets/change-password.png" alt="">
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-6 footer">
-            <img class="image" src="./assets/change-password.png" alt="">
+            </form>
         </div>
     </div>
 </div>
-<app-footer></app-footer>    
+<app-footer></app-footer>

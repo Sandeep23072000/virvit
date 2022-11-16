@@ -26,8 +26,8 @@ button.btn:hover {
     padding-left: 4.5rem;
     background-color: white;
     color: blue;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 11px;
+    padding-bottom: 11px;
     border-color: blue;
 }
 
@@ -100,4 +100,9 @@ span.carousel-control-prev-icon{
 }
 .valid{
     margin-left: 280px;
+}
+
+div h1.xyz{
+    font: 40px !important;
+    color: blueviolet !important;
 }

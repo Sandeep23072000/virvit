@@ -12,6 +12,8 @@ import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { Landingpage3Component } from './landingpage3/landingpage3.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import {  MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
   ]
 })
 export class UniversalModule { }
