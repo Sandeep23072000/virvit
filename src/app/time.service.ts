@@ -31,9 +31,20 @@ export class TimeService {
     console.log(requestOptions);
 
     return this.http.post(this.url + url, data, requestOptions);
-    
+
   }
-  getapi(url: string, data: any): Observable<any>{
-    return this.http.get(this.url + url,data)
+  getapi(url: string): Observable<any> {
+    this.namevalue = JSON.parse(localStorage.getItem("login") || '{}');
+    console.log(this.namevalue);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'token ' + this.namevalue.token,
+    });
+    const requestOptions = { headers: headers };
+
+    console.log(requestOptions);
+
+    return this.http.get(this.url + url, requestOptions);
   }
 }

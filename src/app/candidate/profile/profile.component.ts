@@ -97,7 +97,7 @@ export class ProfileComponent {
   onSubmit() {
 
     this.timeService.postapi('user-profile-update/', this.profileForm.value).subscribe(data=>{ console.log(data)});
-    this.timeService.getapi('user-profile-update/', this.profileForm.value).subscribe( data=>{ console.log(data)});
+    // this.timeService.getapi('user-profile-update/', this.profileForm.value).subscribe( data=>{ console.log(data)});
 
   }
 }

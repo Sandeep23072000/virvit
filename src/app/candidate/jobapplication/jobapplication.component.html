@@ -21,7 +21,6 @@
                                     SGD - {{item.min_salary}} - {{item.max_salary}}
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -30,7 +29,7 @@
         </ng-template>
     </li>
     <li ngbNavItem>
-        <a ngbNavLink class="pt-3 pb-3">Saved Jobs</a>
+        <a ngbNavLink class="pt-3 pb-3" (click)="save(this.searchkey)">Saved Jobs</a>
         <ng-template ngbNavContent>
 
         </ng-template>
