@@ -13,6 +13,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { MatIconModule } from '@angular/material/icon';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { JobapplicationComponent } from './jobapplication/jobapplication.compone
     HomeComponent,
     ProfileComponent,
     PrivacyComponent,
-    JobapplicationComponent
+    JobapplicationComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

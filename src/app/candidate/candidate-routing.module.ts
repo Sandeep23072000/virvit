@@ -5,12 +5,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../authgaurd/auth.guard';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   { path: '',canActivate:[AuthGuard], component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'privacy', component: PrivacyComponent},
-  { path: 'jobapplication', component: JobapplicationComponent}
+  { path: 'jobapplication', component: JobapplicationComponent},
+  { path: 'notifications', component: NotificationsComponent}
 ];
 
 @NgModule({

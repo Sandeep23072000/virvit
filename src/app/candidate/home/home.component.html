@@ -36,13 +36,13 @@
         <div class="col-7 mx-5 mb-2">
             <div class="row mt-4">
                 <div class="col-4 mt-5 fs-5 text-primary mb-2">
-                    <a class="text-decoration-none">Saved Jobs</a>
+                    <a class="text-decoration-none" [routerLink]="['/candidate/jobapplication']" [queryParams]="{link: 'savejob' }">Saved Jobs</a>
                 </div>
                 <div class="col-3 mt-5 fs-5 text-primary mb-2">
-                    <a class="text-decoration-none">Job Applications</a>
+                    <a class="text-decoration-none" routerLink="/candidate/jobapplication">Job Applications</a>
                 </div>
                 <div class="col-5 mt-5 fs-5 text-primary text-center mb-2">
-                    <a class="text-decoration-none">Job Alerts</a>
+                    <a class="text-decoration-none" routerLink="/candidate/notifications">Job Alerts</a>
                 </div>
             </div>
         </div>

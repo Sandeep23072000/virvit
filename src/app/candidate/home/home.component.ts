@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   savekey: any;
   item: any;
   submitted: boolean = false;
+  savejob: any;
 
   constructor(
     private fb: FormBuilder,
