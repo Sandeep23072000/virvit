@@ -13,6 +13,7 @@ export class JobapplicationComponent {
   loginkey: any;
   searchkey: any;
   apply2: any;
+  save2: any;
 
   constructor(
     private httpClient: HttpClient,
@@ -37,8 +38,9 @@ export class JobapplicationComponent {
   }
 
   save(data: any) {
-    this.timeService.getapi('bookmark-job/?user=' + this.loginkey.id).subscribe(data => {
-      console.log(data);
+    this.timeService.getapi('bookmark-job/?user=' + this.loginkey.id).subscribe(response => {
+      console.log(Response);
+      this.save2 = response.results;
     });
   }
 }

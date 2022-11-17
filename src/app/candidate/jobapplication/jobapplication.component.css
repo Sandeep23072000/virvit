@@ -13,4 +13,19 @@ nav-tabs .nav-item.show, .nav-tabs .nav-link {
     margin-left: 50px;
     font-weight: bold;
     font-size: 22px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+.btn{
+    margin-left: 450px;
+    border-color: blue;
+    color: blue;
+    padding-left: 110px;
+    padding-right: 110px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+.btn:hover{
+    color: white;
+    background-color: blueviolet;
 }
