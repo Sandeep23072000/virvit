@@ -1,7 +1,7 @@
 <app-header></app-header>
-<ul ngbNav #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
-    <li ngbNavItem>
-        <a ngbNavLink >Applied Job</a>
+<ul ngbNav [(activeId)]="activeId" #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
+    <li [ngbNavItem]="1">
+        <a ngbNavLink>Applied Job</a>
         <ng-template ngbNavContent>
             <div class="mx-5 mt-5" *ngFor="let item of apply2">
                 <div class="container-fluid w-100 border border-primary rounded-4 mx-3">
@@ -22,15 +22,14 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <button type="submit"
-                                class="btn fs-6 rounded-3">Applied</button>
+                            <button type="submit" class="btn fs-6 rounded-3">Applied</button>
                         </div>
                     </div>
                 </div>
             </div>
         </ng-template>
     </li>
-    <li ngbNavItem>
+    <li [ngbNavItem]="2">
         <a ngbNavLink (click)="save(this.loginkey)">Saved Job</a>
         <ng-template ngbNavContent>
             <div class="mx-5 mt-5" *ngFor="let item of apply2">
@@ -52,8 +51,7 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <button type="submit"
-                                class="btn fs-6 rounded-3">Saved</button>
+                            <button type="submit" class="btn fs-6 rounded-3">Saved</button>
                         </div>
                     </div>
                 </div>

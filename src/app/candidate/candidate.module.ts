@@ -7,7 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -34,7 +34,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     ReactiveFormsModule,
     HttpClientModule,
     TooltipModule.forRoot(),
-    MatIconModule
+    MatIconModule,
+    FormsModule,
   ]
 })
 export class CandidateModule { }

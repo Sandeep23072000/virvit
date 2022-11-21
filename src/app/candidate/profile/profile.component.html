@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-9">
                         <div class="form">
-                            <input type="text" formControlName="name"
+                            <input type="text" formControlName="fullname"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 value="" placeholder="Full Name">
                             <input type="text" formControlName="mobile"
@@ -81,10 +81,9 @@
                         </div>
                     </div>
 
-                    <input type="text"
+                    <input type="text" formControlName="aboutme"
                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                         value="" placeholder="About me">
-
 
                     <div class="row">
                         <div class="col-6">
@@ -100,9 +99,9 @@
                                     </p>
                                     <hr class="pb-3 fw-bold text-primary">
 
-                                    <form formArrayName="education">
-                                        <div *ngFor="let edu of education().controls; let i=index" [formGroupName]="i">
-                                            <div class="container border border-primary rounded-5 m-4">
+                                    <div formArrayName="education">
+                                        <div *ngFor="let eduForm of education.controls; let i=index">
+                                            <div [formGroupName]="i" class="container border border-primary rounded-5 m-4">
 
                                                 <div class="form">
                                                     <p class="text-primary fs-4 mx-2 mt-3">
@@ -110,7 +109,8 @@
                                                         <span class="d-flex justify-content-end">
                                                             <mat-icon class="text-primary fs-5" aria-hidden="false"
                                                                 aria-label="Example home icon" fontIcon="cancel"
-                                                                (click)=removeedu(i)></mat-icon>
+                                                                (click)=removeedu(i)>
+                                                            </mat-icon>
                                                         </span>
                                                     </p>
                                                     <input type="text" formControlName="title"
@@ -122,36 +122,35 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <select
+                                                        <select formControlName="country"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                                             <option selected>Country</option>
                                                         </select>
-                                                        <input type="text" formControlName="startdate"
+                                                        <input type="date" formControlName="startdate"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="Start Date">
                                                     </div>
                                                     <div class="col-6 mb-5">
-                                                        <select
+                                                        <select formControlName="state"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                                             <option selected>State</option>
                                                         </select>
-                                                        <input type="text" formControlName="enddate"
+                                                        <input type="date" formControlName="enddate"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="End Date">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-
 
                             <select
                                 class="form-select text-black-50 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                 <option selected>Country</option>
                             </select>
-                            <select
+                            <select 
                                 class="form-select text-black-50 mb-4  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                 <option selected>Skills</option>
                             </select>
@@ -179,8 +178,8 @@
                                         </span>
                                     </p>
                                     <hr class="pb-4 text-primary fw-bold">
-                                    <form formArrayName="workexperience">
-                                        <div *ngFor="let work of workexperience().controls; let j=index"
+                                    <div formArrayName="workexperience">
+                                        <div *ngFor="let workForm of workexperience.controls; let j=index"
                                             [formGroupName]="j">
                                             <div class="container border border-primary rounded-5 m-4">
                                                 <div class="form">
@@ -201,7 +200,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <input type="text" formControlName="startdate"
+                                                        <input type="date" formControlName="startdate"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="Start Date">
                                                         <input type="text" formControlName="currentlyworking"
@@ -209,10 +208,10 @@
                                                             placeholder="Currently working">
                                                     </div>
                                                     <div class="col-6 mb-5">
-                                                        <input type="text" formControlName="enddate"
+                                                        <input type="date" formControlName="enddate"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="End Date">
-                                                        <select
+                                                        <select formControlName="employment_status"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                                             <option selected>Full/Part/Contact</option>
                                                         </select>
@@ -220,7 +219,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="container border border-primary rounded-3 mt-4">

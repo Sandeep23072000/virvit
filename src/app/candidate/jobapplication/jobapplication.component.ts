@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './jobapplication.component.html',
   styleUrls: ['./jobapplication.component.css']
 })
-export class JobapplicationComponent implements OnInit{
+export class JobapplicationComponent implements OnInit {
   applykey: any;
   http: any;
   loginkey: any;
@@ -16,7 +16,8 @@ export class JobapplicationComponent implements OnInit{
   apply2: any;
   save2: any;
   link: any;
-  link2: any;
+  params: any;
+  activeId: number = 1;
 
   constructor(
     private httpClient: HttpClient,
@@ -25,29 +26,29 @@ export class JobapplicationComponent implements OnInit{
   ) {
     this.loginkey = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.loginkey);
-    // this.timeService.getapi('apply-job/?user=' +).subscribe(data => {
-    //   console.log(data);
-    // });
     this.apply(this.loginkey);
   }
   ngOnInit(): void {
     this.route.queryParams.subscribe(
-      params=>{
+      params => {
         this.link = params['link'];
         console.log(this.link);
-        this.link2=params;
+        // this.link2 = params;
       }
-    )
+      )
+      if(this.params==null) {
+        this.activeId=1;
+      }
+      else{
+        this.activeId=2;
+      }
   }
-
   apply(data: any) {
     this.timeService.getapi('apply-job/?user=' + data.id).subscribe(response => {
       console.log(response);
       this.apply2 = response.results;
     });
-    
   }
-
   save(data: any) {
     this.timeService.getapi('bookmark-job/?user=' + data.id).subscribe(response => {
       console.log(response);
