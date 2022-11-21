@@ -10,7 +10,7 @@
             <form [formGroup]="privacyForm">
                 <div class="row">
                     <div class="col-4">
-                        <div [hidden]="show">
+                        <div *ngIf="!showDiv">
                             <div class="form">
                                 <input formControlName="old_password"
                                     class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -21,8 +21,8 @@
                                     (click)=showdiv()>Change Password</button>
                             </div>
                         </div>
-                        <div *ngIf="show2">
-                            <h4 class="text-primary mt-5">Change password</h4>
+                        <div *ngIf="showDiv">
+                            <h2 class=" text-primary mt-5">Change password</h2>
                             <div class="form">
                                 <input formControlName="new_password"
                                     class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -33,12 +33,12 @@
                             </div>
                             <div class="mx-5">
                                 <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5"
-                                    (click)="onSubmit()">Submit</button>
+                                    (click)="showdiv2()"  (ngSubmit)="onSubmit()">Submit</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-6 footer">
-                        <img class="image" src="./assets/change-password.png" alt="">
+                        <img class="image" src="./assets/change-password.png" alt="privacy">
                     </div>
                 </div>
             </form>

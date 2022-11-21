@@ -9,9 +9,7 @@ import { TimeService } from 'src/app/time.service';
   styleUrls: ['./privacy.component.css']
 })
 export class PrivacyComponent {
-  show = false;
-  show2 = false;
-  show3 = false;
+  showDiv = false;
   namevalue : any;
 
   privacyForm: FormGroup;
@@ -28,8 +26,10 @@ export class PrivacyComponent {
   }
 
   showdiv() {
-    this.show = !this.show;
-    this.show2 = !this.show2;
+    this.showDiv = true;
+  }
+  showdiv2(){
+    this.showDiv = false;
   }
   onSubmit() {
     this.timeService.postapi('change-password/', this.privacyForm.value).subscribe(data => { console.log(data) });
