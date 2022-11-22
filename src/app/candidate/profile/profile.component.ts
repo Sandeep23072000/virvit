@@ -15,6 +15,10 @@ export class ProfileComponent {
   namevalue: any;
   profileForm: FormGroup;
   data: any;
+  resume: any;
+  testimonial: any;
+  videoupload: any;
+
 
   constructor(
     private timeService: TimeService,
@@ -42,7 +46,6 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.namevalue = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.namevalue);
-    console.log(this.namevalue.education_detail);
     if (this.namevalue != null) {
       this.profileForm.setValue({
         fullname: this.namevalue.fullname,
@@ -72,20 +75,20 @@ export class ProfileComponent {
 
       }))
     });
-    if(this.namevalue.employment_detail.length > 0) {
+    if (this.namevalue.employment_detail.length > 0) {
       this.namevalue.employment_detail.forEach((value: any) => {
-      console.log(value);
-      this.workexperience.push(this.fb.group({
-        designation: value.designation,
-        organization: value.organization,
-        currentlyworking: value.currentlyworking,
-        startdate: value.start_date,
-        enddate: value.end_date,
-        employment_status: value.employment_status,
-      }))
-    });
+        console.log(value);
+        this.workexperience.push(this.fb.group({
+          designation: value.designation,
+          organization: value.organization,
+          currentlyworking: value.currentlyworking,
+          startdate: value.start_date,
+          enddate: value.end_date,
+          employment_status: value.employment_status,
+        }))
+      });
+    }
   }
-}
   get education() {
     return this.profileForm.controls["education"] as FormArray;
   }
@@ -125,35 +128,82 @@ export class ProfileComponent {
     this.workexperience.removeAt(j);
   }
 
+  resumeupload(event: any) {
+    this.resume = event.target.files[0];
+    console.log(this.resume);
+  }
+  videoresume(event: any) {
+    this.videoupload = event.target.files[0];
+    console.log(this.videoupload);
+  }
+  videotestimonial(event: any) {
+    this.testimonial = event.target.files[0];
+    console.log(this.testimonial)
+  }
+
   onSubmit() {
     // const formData: any = new FormData();
 
-    // formData.append('about', this.profileForm.controls['about'].value);
-    // formData.append('country', this.profileForm.controls['country'].value);
-    // formData.append('salary', this.profileForm.controls['salary'].value);
-    // formData.append('experience', this.profileForm.controls['experience'].value);
-    // formData.append('currency', this.profileForm.controls['currency'].value);
-    // formData.append('designation', this.profileForm.controls['desigination'].value);
-    // formData.append('dob', this.profileForm.controls['dob'].value);
-    // formData.append('email', this.profileForm.controls['email'].value);
-    // formData.append('job_preference', this.profileForm.controls['job_preference'].value);
-    // formData.append('skill()', this.profileForm.controls['skill()'].value);
-    // formData.append('first_name', this.profileForm.controls['first_name'].value);
-    // formData.append('gender', this.profileForm.controls['gender'].value);
-    // formData.append('employment_status', this.profileForm.controls['employment_status'].value);
-    // formData.append('last_name', this.profileForm.controls['last_name'].value);
-    // formData.append('dial_code', this.profileForm.controls['dial_code'].value);
-    // formData.append('country_code', this.profileForm.controls['country_code'].value);
-    // formData.append('mobile', this.profileForm.controls['mobile'].value);
-    // formData.append('educationitem', this.profileForm.controls['educationitem'].value);
-    // formData.append('employmentitem', this.profileForm.controls['employmentitem'].value);
-    // formData.append('removeEmpitem', this.profileForm.controls['removeEmpitem'].value);
-    // formData.append('removeEducationitem', this.profileForm.controls['removeEducationitem'].value);
+    // formData.append('about', this.profileForm.get('about'));
+    // formData.append('country', this.profileForm.get('country')?.value);
+    // formData.append('salary', this.profileForm.get('salary')?.value);
+    // formData.append('experience', this.profileForm.get('experience')?.value);
+    // formData.append('currency', this.profileForm.get('currency')?.value);
+    // formData.append('designation', this.profileForm.get('desigination')?.value);
+    // formData.append('dob', this.profileForm.get('dob')?.value);
+    // formData.append('email', this.profileForm.get('email')?.value);
+    // formData.append('job_preference', this.profileForm.get('job_preference')?.value);
+    // formData.append('skill', this.profileForm.get('skill')?.value);
+    // formData.append('first_name', this.profileForm.get('first_name')?.value);
+    // formData.append('gender', this.profileForm.get('gender')?.value);
+    // formData.append('employment_status', this.profileForm.get('employment_status')?.value);
+    // formData.append('last_name', this.profileForm.get('last_name')?.value);
+    // formData.append('dial_code', this.profileForm.get('dial_code')?.value);
+    // formData.append('country_code', this.profileForm.get('country_code')?.value);
+    // formData.append('mobile', this.profileForm.get('mobile')?.value);
+    // formData.append('educationitem', this.profileForm.get('educationitem')?.value);
+    // formData.append('employmentitem', this.profileForm.get('employmentitem')?.value);
+    // formData.append('removeEmpitem', this.profileForm.get('removeEmpitem')?.value);
+    // formData.append('removeEducationitem', this.profileForm.get('removeEducationitem')?.value);
+    // formData.append('resume', this.resume);
+    // formData.append('videoupload', this.videoupload);
+    // formData.append('videotestimonial', this.testimonial);
 
-    // this.timeService.postapi('user-profile-update/',formData).subscribe(response => {
-    //   console.log(response)
-    // });
+    // console.log(formData);
+    const Candidatelist = [
+      { about: this.profileForm.get('aboutme')?.value },
+      { country: this.profileForm.get('country')?.value },
+      { salary: this.profileForm.get('salary')?.value },
+      { experience: this.profileForm.get('experience')?.value },
+      { currency: this.profileForm.get('currency')?.value },
+      { designation: this.profileForm.get('designation')?.value },
+      { dob: this.profileForm.get('dob')?.value },
+      { email: this.profileForm.get('email')?.value },
+      { job_preference: this.profileForm.get('job_preference')?.value },
+      { skill: this.profileForm.get('skill')?.value },
+      { first_name: this.profileForm.get('first_name')?.value },
+      { gender: this.profileForm.get('gender')?.value },
+      { employment_status : this.profileForm.get('employment_status')?.value},
+      { last_name : this.profileForm.get('last_name')?.value},
+      { dial_code : this.profileForm.get('dial_code')?.value},
+      { country_code : this.profileForm.get('country_code')?.value},
+      { mobile : this.profileForm.get('mobile')?.value},
+      { educationitem : this.profileForm.get('educationitem')?.value},
+      { removeEmpitem : this.profileForm.get('removeEmpitem')?.value},
+      { removeEducationitem : this.profileForm.get('removeEducationitem')?.value},
+      { resume : this.resume},
+      { videoupload : this.videoupload},
+      { videotestimonial : this.testimonial}
+
+
+    ];
+
+    this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
+      console.log(response)
+    });
   }
+
+
 }
 
 

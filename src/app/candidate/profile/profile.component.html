@@ -101,7 +101,8 @@
 
                                     <div formArrayName="education">
                                         <div *ngFor="let eduForm of education.controls; let i=index">
-                                            <div [formGroupName]="i" class="container border border-primary rounded-5 m-4">
+                                            <div [formGroupName]="i"
+                                                class="container border border-primary rounded-5 m-4">
 
                                                 <div class="form">
                                                     <p class="text-primary fs-4 mx-2 mt-3">
@@ -150,22 +151,11 @@
                                 class="form-select text-black-50 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                 <option selected>Country</option>
                             </select>
-                            <select 
-                                class="form-select text-black-50 mb-4  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
+                            <select
+                                class="form-select text-black-50 mb-2  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                 <option selected>Skills</option>
                             </select>
-                            <div class="container border border-primary rounded-3 mt-5">
-                                <div class="pt-3 pb-3">
-                                    <input type="file" id="video" class="form-control d-none text-center mt-5 ">
-                                    <label class="text-primary d-flex justify-content-center mb-4 mt-3"
-                                        for="video">Video Resume
-                                        <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"
-                                            aria-label="Example icon" fontIcon="upload"></mat-icon>
-                                    </label>
-                                </div>
-                            </div>
                         </div>
-
                         <div class="col-6">
                             <div class="border border-primary rounded-3 mt-4 mb-5">
                                 <div class="mx-5">
@@ -222,32 +212,58 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container border border-primary rounded-3 mt-4">
-                                <div class="pt-3 pb-3">
-                                    <input type="file" id="resume" class="form-control d-none text-center mt-5 ">
-                                    <label class="text-primary d-flex justify-content-center mb-4 mt-3"
-                                        for="resume">Upload Resume Here
-                                        <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"
-                                            aria-label="Example icon" fontIcon="attachment"></mat-icon>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="container5 border border-primary rounded-3">
-                                <div class="pt-3 pb-3">
-                                    <input type="file" id="testimonial" class="form-control d-none text-center mt-5">
-                                    <label class="text-primary d-flex justify-content-center mb-4 mt-3"
-                                        for="testimonial">Video Testimonial
-                                        <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false"
-                                            aria-label="Example icon" fontIcon="upload"></mat-icon>
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </form>
+            <div class="row">
+                <div class="col-6">
+                </div>
+                <div class="col-6">
+                    <div class="resume border border-primary rounded-3">
+                        <div class="pt-3 pb-3">
+                            <input type="file" id="resume" class="form-control d-none text-center mt-5 "
+                                (change)="resumeupload($event)">
+                            <label class="text-primary d-flex justify-content-center mb-4 mt-3" for="resume">Upload
+                                Resume Here
+                                <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
+                                    fontIcon="attachment"></mat-icon>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="container border border-primary rounded-3 mt-4">
+                        <div class="pt-3 pb-3">
+                            <input type="file" id="video" class="form-control d-none text-center mt-5 "
+                                (change)="videoresume($event)">
+                            <label class="text-primary d-flex justify-content-center mb-4 mt-3" for="video">Video Resume
+                                <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
+                                    fontIcon="upload"></mat-icon>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="container5 border border-primary rounded-3">
+                        <div class="pt-3 pb-3">
+                            <input type="file" id="testimonial" class="form-control d-none text-center mt-5"
+                                (change)="videotestimonial($event)">
+                            <label class="text-primary d-flex justify-content-center mb-4 mt-3" for="testimonial">Video
+                                Testimonial
+                                <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
+                                    fontIcon="upload"></mat-icon>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="helpdiv mt-4">
+                <a class="help fw-bold  fs-6" href="#">Need Help?</a>
+            </div>
         </div>
-        <a class="help fw-bold mt-5" href="#">Need Help?</a>
     </div>
 </div>
 <app-footer></app-footer>

@@ -32,15 +32,14 @@ export class JobapplicationComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.link = params['link'];
-        console.log(this.link);
-        // this.link2 = params;
+        console.log(params);
       }
       )
-      if(this.params==null) {
-        this.activeId=1;
+      if(this.link!=null) {
+        this.activeId=2;
       }
       else{
-        this.activeId=2;
+        this.activeId=1;
       }
   }
   apply(data: any) {

@@ -16,9 +16,14 @@
 .container1{
     border-color: blue;
 }
+.resume{
+    margin-top: -120px;
+}
 .help{
-    margin-bottom: 120px;
-    margin-left: 1035px;
+    margin-left: 650px;   
+}
+.helpdiv{
+    margin-bottom: 150px;
 }
 div select.salary:hover{
   color: blue;
