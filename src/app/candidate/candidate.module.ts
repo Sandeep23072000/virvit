@@ -14,7 +14,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { MatIconModule } from '@angular/material/icon';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-
+import { NgxMatSelectSearchModule, } from 'ngx-mat-select-search';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     TooltipModule.forRoot(),
     MatIconModule,
     FormsModule,
+    NgxMatSelectSearchModule,
+    MatSelectModule,
   ]
 })
 export class CandidateModule { }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { __values } from 'tslib';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,9 +15,19 @@ export class ProfileComponent {
   namevalue: any;
   profileForm: FormGroup;
   data: any;
+  skillslist: any;
+  preferencelist: any;
+  countrylist: any;
+  statelist: any;
+  currencylist: any;
+  organisationlist: any;
   resume: any;
   testimonial: any;
   videoupload: any;
+  submitted = false;
+  uploadresume: any;
+  uploadtestimonial: any;
+  uploadvideo: any;
 
 
   constructor(
@@ -26,17 +36,28 @@ export class ProfileComponent {
     private http: HttpClient,
 
   ) {
+    this.addskill();
+    this.addpreference();
+    this.addcountry();
+    this.addcurrency();
+    this.addorganization();
+
     this.profileForm = this.fb.group({
-      fullname: '',
-      mobile: '',
-      email: '',
-      designation: '',
-      gender: '',
-      dateofbirth: '',
-      experience: '',
-      salary: '',
-      country: '',
-      aboutme: '',
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      mobile: ['', Validators.required],
+      email: ['', Validators.required],
+      designation: ['', Validators.required],
+      gender: ['', Validators.required],
+      dateofbirth: ['', Validators.required],
+      experience: ['', Validators.required],
+      salary: ['', Validators.required],
+      country: ['', Validators.required],
+      aboutme: ['', Validators.required],
+      jobpreference: ['', Validators.required],
+      employmentstatus: ['', Validators.required],
+      skill: ['', Validators.required],
+      currency: ['', Validators.required],
 
       education: this.fb.array([]),
       workexperience: this.fb.array([]),
@@ -48,7 +69,8 @@ export class ProfileComponent {
     console.log(this.namevalue);
     if (this.namevalue != null) {
       this.profileForm.setValue({
-        fullname: this.namevalue.fullname,
+        firstname: this.namevalue.first_name,
+        lastname: this.namevalue.last_name,
         mobile: this.namevalue.mobile,
         email: this.namevalue.email,
         designation: this.namevalue.designation,
@@ -57,7 +79,12 @@ export class ProfileComponent {
         dateofbirth: this.namevalue.dob,
         experience: this.namevalue.experience,
         salary: this.namevalue.salary,
-        country: this.namevalue.country_detail.name,
+        country: this.namevalue.country,
+        jobpreference: this.namevalue.job_preference,
+        currency: this.namevalue.currency,
+        employmentstatus: this.namevalue.employment_status,
+        skill: this.namevalue.skill,
+        
         education: [],
         workexperience: [],
 
@@ -70,7 +97,7 @@ export class ProfileComponent {
         university: value.university,
         startdate: value.start_date,
         enddate: value.end_date,
-        country: value.state_detail.country_detail.name,
+        country: value.state_detail.country,
         state: value.state_detail.name,
 
       }))
@@ -80,7 +107,7 @@ export class ProfileComponent {
         console.log(value);
         this.workexperience.push(this.fb.group({
           designation: value.designation,
-          organization: value.organization,
+          organisation: value.organisation,
           currentlyworking: value.currentlyworking,
           startdate: value.start_date,
           enddate: value.end_date,
@@ -89,6 +116,7 @@ export class ProfileComponent {
       });
     }
   }
+
   get education() {
     return this.profileForm.controls["education"] as FormArray;
   }
@@ -116,7 +144,7 @@ export class ProfileComponent {
   addwork() {
     const workForm = this.fb.group({
       designation: '',
-      organization: '',
+      organisation: '',
       currentlyworking: '',
       startdate: '',
       enddate: '',
@@ -129,8 +157,9 @@ export class ProfileComponent {
   }
 
   resumeupload(event: any) {
-    this.resume = event.target.files[0];
-    console.log(this.resume);
+    const resume = event.target.files[0];
+    console.log(resume)
+
   }
   videoresume(event: any) {
     this.videoupload = event.target.files[0];
@@ -140,70 +169,78 @@ export class ProfileComponent {
     this.testimonial = event.target.files[0];
     console.log(this.testimonial)
   }
+  addskill() {
+    this.timeService.getapi('skill/').subscribe((data: any) => {
+      console.log(data.results);
+      this.skillslist = data.results;
+    })
+  }
+  addpreference() {
+    this.timeService.getapi('job-preference/').subscribe((data: any) => {
+      console.log(data.results);
+      this.preferencelist = data.results;
+    })
+  }
+  addcountry() {
+    this.timeService.getapi('country/').subscribe((data: any) => {
+      console.log(data.results);
+      this.countrylist = data.results;
+    })
+  }
+  addcurrency() {
+    this.timeService.getapi('currency/').subscribe((data: any) => {
+      console.log(data.results);
+      this.currencylist = data.results;
+    })
+  }
+  addorganization() {
+    this.timeService.getapi('organisation/').subscribe((data: any) => {
+      console.log(data.results);
+      this.organisationlist = data.results;
+    })
+  }
+  getcountry(event: any): void {
+    const select = event.target.value;
+    console.log(select);
 
-  onSubmit() {
-    // const formData: any = new FormData();
-
-    // formData.append('about', this.profileForm.get('about'));
-    // formData.append('country', this.profileForm.get('country')?.value);
-    // formData.append('salary', this.profileForm.get('salary')?.value);
-    // formData.append('experience', this.profileForm.get('experience')?.value);
-    // formData.append('currency', this.profileForm.get('currency')?.value);
-    // formData.append('designation', this.profileForm.get('desigination')?.value);
-    // formData.append('dob', this.profileForm.get('dob')?.value);
-    // formData.append('email', this.profileForm.get('email')?.value);
-    // formData.append('job_preference', this.profileForm.get('job_preference')?.value);
-    // formData.append('skill', this.profileForm.get('skill')?.value);
-    // formData.append('first_name', this.profileForm.get('first_name')?.value);
-    // formData.append('gender', this.profileForm.get('gender')?.value);
-    // formData.append('employment_status', this.profileForm.get('employment_status')?.value);
-    // formData.append('last_name', this.profileForm.get('last_name')?.value);
-    // formData.append('dial_code', this.profileForm.get('dial_code')?.value);
-    // formData.append('country_code', this.profileForm.get('country_code')?.value);
-    // formData.append('mobile', this.profileForm.get('mobile')?.value);
-    // formData.append('educationitem', this.profileForm.get('educationitem')?.value);
-    // formData.append('employmentitem', this.profileForm.get('employmentitem')?.value);
-    // formData.append('removeEmpitem', this.profileForm.get('removeEmpitem')?.value);
-    // formData.append('removeEducationitem', this.profileForm.get('removeEducationitem')?.value);
-    // formData.append('resume', this.resume);
-    // formData.append('videoupload', this.videoupload);
-    // formData.append('videotestimonial', this.testimonial);
-
-    // console.log(formData);
-    const Candidatelist = [
-      { about: this.profileForm.get('aboutme')?.value },
-      { country: this.profileForm.get('country')?.value },
-      { salary: this.profileForm.get('salary')?.value },
-      { experience: this.profileForm.get('experience')?.value },
-      { currency: this.profileForm.get('currency')?.value },
-      { designation: this.profileForm.get('designation')?.value },
-      { dob: this.profileForm.get('dob')?.value },
-      { email: this.profileForm.get('email')?.value },
-      { job_preference: this.profileForm.get('job_preference')?.value },
-      { skill: this.profileForm.get('skill')?.value },
-      { first_name: this.profileForm.get('first_name')?.value },
-      { gender: this.profileForm.get('gender')?.value },
-      { employment_status : this.profileForm.get('employment_status')?.value},
-      { last_name : this.profileForm.get('last_name')?.value},
-      { dial_code : this.profileForm.get('dial_code')?.value},
-      { country_code : this.profileForm.get('country_code')?.value},
-      { mobile : this.profileForm.get('mobile')?.value},
-      { educationitem : this.profileForm.get('educationitem')?.value},
-      { removeEmpitem : this.profileForm.get('removeEmpitem')?.value},
-      { removeEducationitem : this.profileForm.get('removeEducationitem')?.value},
-      { resume : this.resume},
-      { videoupload : this.videoupload},
-      { videotestimonial : this.testimonial}
-
-
-    ];
-
-    this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
-      console.log(response)
-    });
+    this.timeService.getapi('state/?country=' + select).subscribe((data: any) => {
+      console.log(data.results);
+      this.statelist = data.results;
+    })
   }
 
+  onSubmit() {
 
+    this.submitted = true;
+    console.log(this.profileForm.value);
+    if (this.profileForm.valid) {
+
+      const Candidatelist = [
+        { about: this.profileForm.get('aboutme')?.value },
+        { country: this.profileForm.get('country')?.value },
+        { salary: this.profileForm.get('salary')?.value },
+        { experience: this.profileForm.get('experience')?.value },
+        { currency: this.profileForm.get('currency')?.value },
+        { designation: this.profileForm.get('designation')?.value },
+        { dob: this.profileForm.get('dateofbirth')?.value },
+        { email: this.profileForm.get('email')?.value },
+        { job_preference: this.profileForm.get('jobpreference')?.value },
+        { skill: this.profileForm.get('skill')?.value },
+        { first_name: this.profileForm.get('firstname')?.value },
+        { gender: this.profileForm.get('gender')?.value },
+        { employmentstatus: this.profileForm.get('employmentstatus')?.value },
+        { last_name: this.profileForm.get('lastname')?.value },
+        { mobile: this.profileForm.get('mobile')?.value },
+        { educationitem: this.profileForm.get('education')?.value },
+        { resume: this.profileForm.get('resume')?.value}
+      ];}
+
+    //   this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
+    //     console.log(response)
+    //   });
+    // }
+    // else {
+    //   console.log('error')
+    // }
+  }
 }
-
-

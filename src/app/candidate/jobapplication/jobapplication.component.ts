@@ -49,7 +49,7 @@ export class JobapplicationComponent implements OnInit {
     });
   }
   save(data: any) {
-    this.timeService.getapi('bookmark-job/?user=' + data.id).subscribe(response => {
+    this.timeService.getapi('bookmark-job/?country=' + data.id).subscribe(response => {
       console.log(response);
       this.save2 = response.results;
     });

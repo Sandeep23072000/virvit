@@ -31,3 +31,6 @@ div select.salary:hover{
 .container5{
     margin-top: 35px;
 }
+.resume:hover{
+    cursor: pointer;
+}
