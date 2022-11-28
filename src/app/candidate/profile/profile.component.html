@@ -13,7 +13,7 @@
                         <div class="form">
                             <div class="row">
                                 <div class="col-6">
-                                    <input ltype="text" formControlName="firstname"
+                                    <input type="text" formControlName="firstname"
                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         value="" placeholder="First Name" required>
                                     <span class="text-danger fs-6"
@@ -35,14 +35,14 @@
 
                             <input type="text" formControlName="mobile"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                value="" placeholder="Phone">
+                                value="" placeholder="Phone" [readOnly]="true">
                             <span class="text-danger fs-6"
                                 *ngIf="submitted && profileForm.controls['mobile'].errors?.['required']">
                                 Phone Number is required
                             </span>
                             <input type="email" formControlName="email"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                value="" placeholder="Email">
+                                value="" placeholder="Email" [readOnly]="true">
                             <span class="text-danger fs-6"
                                 *ngIf="submitted && profileForm.controls['email'].errors?.['required']">
                                 Email is required
@@ -57,7 +57,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select 
+                                <select
                                     class="form-select mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                     <option selected>{{namevalue.gender}}</option>
                                     <option value="1">Male</option>
@@ -65,7 +65,7 @@
                                 </select>
                                 <input formControlName="experience" type="number" placeholder="Experience"
                                     class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                               
+
                                 <select formControlName="jobpreference"
                                     class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                     <option value="">Job Preference</option>
@@ -84,7 +84,7 @@
                                     *ngIf="submitted && profileForm.controls['dateofbirth'].errors?.['required']">
                                     Date of Birth is required
                                 </span>
-                                <select 
+                                <select
                                     class="form-select mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
                                     <option selected>{{namevalue.employment_status}}</option>
                                     <option value="1">Part Time</option>
@@ -123,7 +123,12 @@
                     </div>
                     <div class="col-3">
                         <div>
-                            <img class="image rounded-circle mb-4" src="./assets/hiring-process2.png" alt="Profile">
+                            <img [src]="url" alt="img" class="image rounded-circle mb-4"><br>
+                            <input class="d-none" type="file" id="uploadimage" (change)="onSelectFile($event)">
+                            <label for="uploadimage">
+                                <mat-icon class="imageicon text-primary fs-5" aria-hidden="false" aria-label="Example icon"
+                                    fontIcon="open_in_browser"></mat-icon>
+                            </label>
                         </div>
                         <div>
                             <button class=" btn5 text-white bg-primary rounded-4 fs-6 py-2 px-5 border border-none"
@@ -192,10 +197,8 @@
                                                     <div class="col-6 mb-5">
                                                         <select formControlName="state"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                                                            <!-- <option selected>State</option> -->
-                                                            <option value="">State</option>
-                                                            <option *ngFor="let state of statelist"
-                                                                [value]="state.id">
+                                                            <option value="selected">State</option>
+                                                            <option *ngFor="let state of statelist" [value]="state.id">
                                                                 {{state.name}}</option>
                                                         </select>
                                                         <input type="date" formControlName="enddate"
@@ -227,16 +230,10 @@
                                     {{skill.name}}
                                 </mat-option>
                             </mat-select>
-                            <!-- <select formControlName="skill"
-                                    class="form-select text-black-50 mb-2  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                                <option>skill</option>
-                                <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}}
-                                </option>
-                                </select>
-                                <span class="text-danger fs-6"
-                                    *ngIf="submitted && profileForm.controls['skill'].errors?.['required']">
-                                    Skills is required
-                                </span> -->
+                            <span class="text-danger fs-6"
+                                *ngIf="submitted && profileForm.controls['skill'].errors?.['required']">
+                                Skills is required
+                            </span>
                         </div>
                         <div class="col-6">
                             <div class="border border-primary rounded-3 mt-4 mb-5">
@@ -310,7 +307,8 @@
                         <div class="pt-3 pb-3">
                             <input type="file" id="resume" class="form-control resume d-none text-center mt-5 "
                                 (change)="resumeupload($event)">
-                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3" for="resume">Upload
+                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3"
+                                for="resume">Upload
                                 Resume Here
                                 <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
                                     fontIcon="attachment"></mat-icon>
@@ -325,7 +323,8 @@
                         <div class="pt-3 pb-3">
                             <input type="file" id="video" class="form-control resume d-none text-center mt-5 "
                                 (change)="videoresume($event)">
-                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3" for="video">Video Resume
+                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3" for="video">Video
+                                Resume
                                 <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
                                     fontIcon="upload"></mat-icon>
                             </label>
@@ -337,7 +336,8 @@
                         <div class="pt-3 pb-3">
                             <input type="file" id="testimonial" class="form-control resume d-none text-center mt-5"
                                 (change)="videotestimonial($event)">
-                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3" for="testimonial">Video
+                            <label class="text-primary resume d-flex justify-content-center mb-4 mt-3"
+                                for="testimonial">Video
                                 Testimonial
                                 <mat-icon class="text-primary fs-5 mx-2" aria-hidden="false" aria-label="Example icon"
                                     fontIcon="upload"></mat-icon>

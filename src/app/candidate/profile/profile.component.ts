@@ -14,16 +14,13 @@ import { __values } from 'tslib';
 export class ProfileComponent {
   namevalue: any;
   profileForm: FormGroup;
-  data: any;
   skillslist: any;
   preferencelist: any;
   countrylist: any;
   statelist: any;
   currencylist: any;
+  url: any;
   organisationlist: any;
-  resume: any;
-  testimonial: any;
-  videoupload: any;
   submitted = false;
   uploadresume: any;
   uploadtestimonial: any;
@@ -46,7 +43,8 @@ export class ProfileComponent {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       mobile: ['', Validators.required],
-      email: ['', Validators.required],
+     
+      email: [{ value: '', readonly: true }, Validators.required],
       designation: ['', Validators.required],
       gender: ['', Validators.required],
       dateofbirth: ['', Validators.required],
@@ -67,6 +65,10 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.namevalue = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.namevalue);
+    this.url = this.namevalue.image;
+    this.uploadresume = this.namevalue.resume;
+    this.uploadvideo = this.namevalue.video_resume_detail;
+    this.uploadtestimonial = this.namevalue.user_testimonial;
     if (this.namevalue != null) {
       this.profileForm.setValue({
         firstname: this.namevalue.first_name,
@@ -84,7 +86,6 @@ export class ProfileComponent {
         currency: this.namevalue.currency,
         employmentstatus: this.namevalue.employment_status,
         skill: this.namevalue.skill,
-        
         education: [],
         workexperience: [],
 
@@ -159,15 +160,18 @@ export class ProfileComponent {
   resumeupload(event: any) {
     const resume = event.target.files[0];
     console.log(resume)
-
+    this.uploadresume = resume;
   }
+
   videoresume(event: any) {
-    this.videoupload = event.target.files[0];
-    console.log(this.videoupload);
+    const videoupload = event.target.files[0];
+    console.log(videoupload);
+    this.uploadvideo = videoupload;
   }
   videotestimonial(event: any) {
-    this.testimonial = event.target.files[0];
-    console.log(this.testimonial)
+    const testimonial = event.target.files[0];
+    console.log(testimonial)
+    this.uploadtestimonial = testimonial;
   }
   addskill() {
     this.timeService.getapi('skill/').subscribe((data: any) => {
@@ -208,13 +212,21 @@ export class ProfileComponent {
       this.statelist = data.results;
     })
   }
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
 
+      reader.readAsDataURL(event.target.files[0]); 
+
+      reader.onload = (event: any) => { 
+        this.url = event.target.result;
+      }
+    }
+  }
   onSubmit() {
 
     this.submitted = true;
-    console.log(this.profileForm.value);
     if (this.profileForm.valid) {
-
       const Candidatelist = [
         { about: this.profileForm.get('aboutme')?.value },
         { country: this.profileForm.get('country')?.value },
@@ -231,16 +243,20 @@ export class ProfileComponent {
         { employmentstatus: this.profileForm.get('employmentstatus')?.value },
         { last_name: this.profileForm.get('lastname')?.value },
         { mobile: this.profileForm.get('mobile')?.value },
+        { image: this.url},
         { educationitem: this.profileForm.get('education')?.value },
-        { resume: this.profileForm.get('resume')?.value}
-      ];}
-
-    //   this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
-    //     console.log(response)
-    //   });
-    // }
-    // else {
-    //   console.log('error')
-    // }
+        { resume: this.uploadresume },
+        { testimonial: this.uploadtestimonial },
+        { videoupload: this.uploadvideo},
+      ];
+      console.log(Candidatelist);
+    
+      this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
+        console.log(response)
+      });
+     }
+    else {
+      console.log('error');
+    }
   }
 }

@@ -34,3 +34,8 @@ div select.salary:hover{
 .resume:hover{
     cursor: pointer;
 }
+.imageicon{
+    margin-left: 160px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
