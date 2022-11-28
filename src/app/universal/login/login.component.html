@@ -19,10 +19,13 @@
                                     <div class="text-danger" *ngIf="submitted && registerFormControl.username.errors">Email must be a valid
                                         email address
                                     </div>
-                                    <input ngmodel type="password" formControlName="password"
-                                        class="form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                        value="" placeholder="Password" required>
-                                        
+                                        <input matInput ngmodel type="password" formControlName="password"
+                                            class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                            placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                            formControlName="password" required>
+                                        <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                            'visibility_off' :
+                                            'visibility'}}</mat-icon>
                                     <span class="text-danger"
                                         *ngIf="submitted && checkoutForm.controls.password.errors?.['required']">
                                         Password is required
@@ -30,13 +33,13 @@
                                     <div class=" form-check mt-2">
                                         <input class="form-check-input border-primary" type="checkbox" value=""
                                             id="flexCheckDefault">
-                                        <label class="form-check-label mx-n2 text-primary" for="flexCheckDefault">
+                                        <label class="form-check-label mx-n2 text-primary fs-6" for="flexCheckDefault">
                                             Remember me
                                         </label>
-                                        <span class="span text-primary "> Forgot Password ?</span>
+                                        <span class="span text-primary  fs-6"> Forgot Password ?</span>
 
                                         <div class="d-grid">
-                                            <button class=" btn btn-primary mx-3 mt-5 mb-3 px-5" type="submit">
+                                            <button class=" btn btn-primary mx-3 mt-5 mb-3 px-5 fw-bold" type="submit">
                                                 Login</button>
                                         </div>
 
@@ -52,13 +55,13 @@
             </div>
             <div class="container-fluid mb-5">
                 <div class="row" style="margin-left:60px;">
-                    <div class=" col-6 ">
+                    <div class=" col-6 mb-5 ">
                         <div class=" bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 "
                             style="margin-right: 60px;">
                             <div class="mx-5">
-                                <h5 class="pt-4 text-white"> New Here ?</h5>
+                                <h5 class="pt-4 text-white fs-5 fw-bold"> New Here ?</h5>
                             </div>
-                            <p class="text-white mx-5 lh-sm">
+                            <p class="text-white mx-5 lh-sm fs-6">
                                 Create your profile & start building your dreams
                             </p>
                             <div class="mb-5">
@@ -67,13 +70,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col-6">
+                    <div class=" col-6 mb-5">
                         <div class="mb-5 bg-primary rounded-4 border border-3 border-start-0 border-end-0 border-top-0 "
                             style="margin-left: 50px;">
-                            <p class="pt-3 text-white text-center lh-sm">
+                            <p class="pt-3 text-white text-center lh-sm fs-6">
                                 Your dreams Job is one click away !
                             </p>
-                            <p class="text-white text-center lh-sm">
+                            <p class="text-white text-center lh-sm fs-6">
                                 Get the app on your mobile
                             </p>
                             <img class="img1 mb-2 h-25 w-25" src="./assets/google_store.png" alt="google play">
@@ -92,7 +95,7 @@
                 <div class="row mt-5">
                     <div class="col-5 mt-5 border border-primary border-bottom-0  employer">
                         <div class="mx-2">
-
+                            <h1 class="text-primary fs-4 fw-bold mx-5 mt-4">Login to start your search !</h1>
                             <form class="form-horizontal" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
                                 <input type="text"
                                     class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
@@ -101,24 +104,31 @@
                                     *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
                                     Email/Login ID is required
                                 </span>
-                                <input type="text"
+                                <input matInput ngmodel type="password"
+                                class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                formControlName="password" required>
+                            <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                'visibility_off' :
+                                'visibility'}}</mat-icon>
+                                <!-- <input type="text"
                                     class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                    placeholder="Password" required>
+                                    placeholder="Password" required> -->
                                 <span class="text-danger"
                                     *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
                                     Password is required
                                 </span>
                                 <div class="form-check mt-2">
-                                    <div class=" text-primary mx-5 mt-5 font-weight-bold text-end"> Forgot Password ?
+                                    <div class=" text-primary mx-5 mt-5 font-weight-bold text-end fs-6"> Forgot Password ?
                                     </div>
                                     <div class=" form-check" style="text-align: left;">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label text-primary" for="flexCheckDefault">
+                                        <label class="form-check-label text-primary fs-6" for="flexCheckDefault">
                                             Remind me
                                         </label>
                                     </div>
                                     <div class="d-grid">
-                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3">Login</button>
+                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3 fw-bold">Login</button>
                                     </div>
 
                                 </div>

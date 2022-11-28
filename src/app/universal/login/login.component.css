@@ -55,4 +55,12 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
     font-weight: bold;
     font-size: 22px;
 }
+.eyeicon{
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 500px;
+}
+.eyeicon:hover{
+    cursor: pointer;
+}
 

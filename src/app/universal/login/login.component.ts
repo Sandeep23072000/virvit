@@ -18,6 +18,7 @@ export class LoginComponent {
   httpClient: any;
   submitted = false;
   formBilder: any;
+  hide = true;
 
   constructor(
     private router: Router,

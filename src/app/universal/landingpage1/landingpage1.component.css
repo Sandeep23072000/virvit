@@ -106,3 +106,17 @@ div h1.xyz{
     font: 40px !important;
     color: blueviolet !important;
 }
+.searchicon{
+    position: absolute;
+    margin-left: 300px;
+    margin-top: -40px;
+    font-size: 30px;
+    color: blue;
+}
+.roomicon{
+    position: absolute;
+    margin-left: 50px;
+    margin-top: -40px;
+    font-size: 27px;
+    color: blue;
+}

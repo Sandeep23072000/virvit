@@ -28,3 +28,6 @@ button.btn:hover{
     width: 12%;
     height: 25%;
 }
+.para{
+    line-height: 40px;
+}

@@ -40,8 +40,8 @@
                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                             required>
                                             <option value="">Gender</option>
-                                            <option value="Male">male</option>
-                                            <option value="Female">female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </select>
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.gender.errors?.['required']">
@@ -49,9 +49,15 @@
                                         </span>
                                     </div>
                                     <div class="col-6">
-                                        <input ngModel formControlName="birthdate" type="date"
-                                            class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        <input ngModel formControlName="birthdate" type="date" id="birthdate"
+                                            class="form-control text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                             placeholder="Date of Birth" required>
+                                        <!-- <label
+                                            class=" form-control mt-4 fs-6 text-black-50 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            for="birthdate">Date of Birth
+                                            <mat-icon class="dateicon1 fs-5 text-primary" aria-hidden="false"
+                                                aria-label="Example icon" fontIcon="calendar_today"></mat-icon>
+                                        </label> -->
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.birthdate.errors?.['required']">
                                             Date of Birth is required
@@ -88,9 +94,15 @@
                                         *ngIf="submitted && registerForm.controls.jobpreference.errors?.['required']">
                                         Job preference is required
                                     </span>
-                                    <input formControlName="startofwork" type="date"
-                                        class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                    <input ngModel formControlName="startofwork" type="date" id="startdate"
+                                        class="form-control text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         required>
+                                    <!-- <label
+                                        class=" form-control mt-4 fs-6 text-black-50 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        for="startdate">Start of Date
+                                        <mat-icon class="dateicon fs-5 text-primary" aria-hidden="false"
+                                            aria-label="Example icon" fontIcon="calendar_today"></mat-icon>
+                                    </label> -->
                                     <span class="text-danger"
                                         *ngIf="submitted && registerForm.controls.startofwork.errors?.['required']">
                                         Start of work is required
@@ -99,7 +111,9 @@
                                         <input ngModel formControlName="resume" type="file" id="resume"
                                             class="form-control d-none  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                             placeholder="Upload Resume">
-                                        <label class=" form-control mt-4 Upload Resume fs-6 text-black-50 shadow-none border border-3 border-start-0 border-end-0 border-top-0" for="resume">Upload Resume
+                                        <label
+                                            class=" form-control mt-4 fs-6 text-black-50 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                            for="resume">Upload Resume
                                             <mat-icon class="icon fs-5 text-primary" aria-hidden="false"
                                                 aria-label="Example icon" fontIcon="upload"></mat-icon>
                                         </label>
@@ -109,17 +123,33 @@
                                         </span>
                                     </div>
                                     <div>
-                                        <input ngModel formControlName="password" type="password"
-                                            class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                        <input matInput
+                                            class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                            placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                            formControlName="password" required>
+                                        <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                            'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                        <!-- <input ngModel formControlName="password" type="password" id="eyeicon"
+                                            class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
                                             placeholder="Password" required>
+                                            <span for="eyeicon" class="eyeicon">
+                                                <mat-icon matSuffix>visibility</mat-icon>
+                                            </span> -->
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.password.errors?.['required']">
                                             password is required
                                         </span>
-
-                                        <input ngModel formControlName="confirmpassword" type="password"
+                                        <input
+                                            class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                            placeholder="Confirm Password" [type]="hide ? 'password' : 'text'"
+                                            formControlName="confirmpassword" required>
+                                        <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                            'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                        <!-- <input ngModel formControlName="confirmpassword" type="password"
                                             class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                            placeholder="Confirm Password" required>
+                                            placeholder="Confirm Password" required> -->
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
                                             confirm password is required

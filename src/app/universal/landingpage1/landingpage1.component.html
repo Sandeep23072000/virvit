@@ -4,7 +4,7 @@
         <div class="col-6">
             <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Job Title,Skills or Keyword" required>
-            <!-- <mat-icon class="icon1" fontIcon="upload"></mat-icon> -->
+            <mat-icon class="searchicon" >search</mat-icon>
             <span class="valid text-danger fs-5" *ngIf="submitted && searchForm.controls['title'].errors?.['required']">
                 Job Title,Skills or Keyword is required
             </span>
@@ -12,6 +12,7 @@
         <div class="col-4">
             <input ngForm formControlName="area" type="text" class="form-control form2 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Area, City and Town" required>
+                <mat-icon class="roomicon" >room</mat-icon>
             <span class="valid2 fs-5 text-danger" *ngIf="submitted && searchForm.controls['area'].errors?.['required']">
                 Area, City and Town is required
             </span>
@@ -66,8 +67,8 @@
                     </button>
                     <div class="carousel-item active d-flux m-2">
                         <div class="card rounded-5 p-3  mx-5">
-                            <h6 class="text-primary mt-3 mb-3"> EDI Specialist, ITX</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6"> EDI Specialist, ITX</h6>
+                            <p class="fs-6">
                                 East <br>
                                 SDG-7,000-8,000 <br>
                                 4-5 Years Experience
@@ -75,8 +76,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3   mx-4">
-                            <h6 class="text-primary mt-3 mb-3">Technical Officer</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Technical Officer</h6>
+                            <p class="fs-6">
                                 South <br>
                                 SDG-4,000-5,000 <br>
                                 2-3 Years Experience
@@ -85,8 +86,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3">Software Engineer</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Software Engineer</h6>
+                            <p class="fs-6">
                                 EAst <br>
                                 SDG-7,000-8,000 <br>
                                 4-5 Years Experience
@@ -95,8 +96,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3   mx-5">
-                            <h6 class="text-primary mt-3 mb-3">Computer Engineer</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Computer Engineer</h6>
+                            <p class="fs-6">
                                 East <br>
                                 SDG-7,000-8,000 <br>
                                 4-5 Years Experience
@@ -105,8 +106,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3">IT Network</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">IT Network</h6>
+                            <p class="fs-6"> 
                                 West <br>
                                 SDG-10,000-13,000 <br>
                                 5-6 Years Experience
@@ -130,8 +131,8 @@
                     </button>
                     <div class="carousel-item active d-flux m-2">
                         <div class="card rounded-5 p-3  mx-5 fs-6">
-                            <h6 class="text-primary mt-3 mb-3">App Developer</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">App Developer</h6>
+                            <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
                                 5-6 Years Experience
@@ -139,8 +140,8 @@
 
                         </div>
                         <div class="card rounded-5 p-3  mx-5">
-                            <h6 class="text-primary mt-3 mb-3">Web Developer</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Web Developer</h6>
+                            <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
                                 5-6 Years Experience
@@ -148,8 +149,8 @@
 
                         </div>
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3">SDE-1</h6>
-                            <p>
+                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">SDE-1</h6>
+                            <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
                                 5-6 Years Experience

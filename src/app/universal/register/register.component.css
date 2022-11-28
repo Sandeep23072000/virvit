@@ -72,7 +72,30 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
     font-size: 22px;
 }
 .icon{
-    margin-left: 270px;
+    margin-left: 280px;
+}
+.icon:hover{
+    cursor: pointer;
+}
+.eyeicon{
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 440px;
+}
+.eyeicon:hover{
+    cursor: pointer;
+}
+.dateicon{
+    margin-left: 335px;
+}
+.dateicon:hover{
+    cursor: pointer;
+}
+.dateicon1{
+    margin-left: 40px;
+}
+.dateicon1:hover{
+    cursor: pointer;
 }
 
     

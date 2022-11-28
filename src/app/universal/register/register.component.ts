@@ -10,12 +10,13 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 })
 export class RegisterComponent {
   skillslist: any;
+  submitted = false;
   data: any;
   preferencelist: any;
   registerForm = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
+    email: ['', Validators.required],
     gender: ['', Validators.required],
     birthdate: ['', Validators.required],
     mobilephonenumber: ['', Validators.required],
@@ -27,13 +28,7 @@ export class RegisterComponent {
     resume: ['', Validators.required],
     device_id: '1',
   });
-  submitted = false;
-  httpClint: any;
-  formBilder: any;
-  router: any;
-
-
-
+  hide = true;
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -61,7 +56,6 @@ export class RegisterComponent {
 
   get signupFormControl() {
     return this.registerForm.controls;
-  
     function passwordMatch(password: any, confirmpassword: any) {
       return function (form: AbstractControl) {
         const passwordvalue = form.get(password)?.value
@@ -91,8 +85,7 @@ export class RegisterComponent {
       console.log('error');
     }
   }
-
-  get passwordMatchError() {
+  passwordMatchError() {
     return (
       this.registerForm.getError('mismatch') &&
       this.registerForm.get('confirmPassword')?.touched

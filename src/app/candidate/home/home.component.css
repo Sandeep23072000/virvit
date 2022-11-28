@@ -53,3 +53,20 @@ div.container2{
 .valid{
     margin-left: 280px;
 }
+.searchicon{
+    position: absolute;
+    margin-left: 300px;
+    margin-top: -45px;
+    font-size: 30px;
+    color: blue;
+}
+.roomicon{
+    position: absolute;
+    margin-left: 50px;
+    margin-top: -45px;
+    font-size: 27px;
+    color: blue;
+}
+.icon{
+    font-size: 25px;
+}

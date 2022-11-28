@@ -32,7 +32,7 @@
                                 </div>
 
                             </div>
-
+                            
                             <input type="text" formControlName="mobile"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 value="" placeholder="Phone" [readOnly]="true">
@@ -173,6 +173,7 @@
                                                             </mat-icon>
                                                         </span>
                                                     </p>
+                                                    <input type="hidden" formControlName="id">
                                                     <input type="text" formControlName="title"
                                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                         placeholder="Title">
@@ -190,7 +191,7 @@
                                                                 [value]="country.id">
                                                                 {{country.name}}</option>
                                                         </select>
-                                                        <input type="date" formControlName="startdate"
+                                                        <input type="date" formControlName="start_date"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="Start Date">
                                                     </div>
@@ -201,7 +202,7 @@
                                                             <option *ngFor="let state of statelist" [value]="state.id">
                                                                 {{state.name}}</option>
                                                         </select>
-                                                        <input type="date" formControlName="enddate"
+                                                        <input type="date" formControlName="end_date"
                                                             class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                                             placeholder="End Date">
                                                     </div>
