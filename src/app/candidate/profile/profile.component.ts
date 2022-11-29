@@ -20,6 +20,7 @@ export class ProfileComponent {
   statelist: any;
   currencylist: any;
   url: any;
+  imagefile: any;
   organisationlist: any;
   submitted = false;
   uploadresume: any;
@@ -66,9 +67,6 @@ export class ProfileComponent {
     this.namevalue = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.namevalue);
     this.url = this.namevalue.image;
-    this.uploadresume = JSON.stringify(this.namevalue.resume);
-    this.uploadvideo = JSON.stringify(this.namevalue.video_resume_detail);
-    this.uploadtestimonial = JSON.stringify(this.namevalue.user_testimonial);
     if (this.namevalue != null) {
       this.profileForm.setValue({
         firstname: this.namevalue.first_name,
@@ -216,7 +214,7 @@ export class ProfileComponent {
   }
   onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+       let reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); 
 
@@ -224,11 +222,13 @@ export class ProfileComponent {
         this.url = event.target.result;
       }
     }
+    this.imagefile = event.target.files[0]; 
   }
   onSubmit() {
+
     this.submitted = true;
     if (this.profileForm.valid) {
-      const Candidatelist = [
+      let Candidatelist:any = [
         { 'about': this.profileForm.get('aboutme')?.value },
         { 'country': this.profileForm.get('country')?.value },
         { 'salary': JSON.stringify(this.profileForm.get('salary')?.value )},
@@ -244,19 +244,28 @@ export class ProfileComponent {
         { 'employment_status': this.profileForm.get('employmentstatus')?.value },
         { 'last_name': this.profileForm.get('lastname')?.value },
         { 'mobile': this.profileForm.get('mobile')?.value },
-        // { image: this.url},
         { 'country_code': this.namevalue.country_code},
         { 'dial_code': this.namevalue.dial_code},
         { 'educationitem': JSON.stringify(this.profileForm.get('education')?.value) },
-        // { resume: this.uploadresume },
+        // { resume: this.uploadresume  ? this.uploadresume : this.namevalue.resume},
         // { testimonial: this.uploadtestimonial },
         // { videoupload: this.uploadvideo},
         { 'employmentitem':JSON.stringify([])},
         { 'removeEmpitem':JSON.stringify([])},
         { 'removeEducationitem':JSON.stringify([])},
       ];
-      console.log(Candidatelist);
-    
+      if(this.imagefile!= null){
+        Candidatelist.push({'image': this.imagefile});
+      }
+      if(this.uploadresume!=null){
+        Candidatelist.push({'resume': this.uploadresume});
+      }
+      if(this.uploadtestimonial!=null){
+        Candidatelist.push({'testimonial': this.uploadtestimonial});
+      }
+      if(this.uploadvideo!=null){
+        Candidatelist.push({'videoupload': this.uploadvideo});
+      }
       this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
         console.log(response)
         localStorage.setItem("login", JSON.stringify(response));
