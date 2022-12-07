@@ -6,13 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../authgaurd/auth.guard';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { JobDetailComponent } from './job-detail/job-detail.component';
 
 const routes: Routes = [
   { path: '',canActivate:[AuthGuard], component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'privacy', component: PrivacyComponent},
   { path: 'jobapplication', component: JobapplicationComponent},
-  { path: 'notifications', component: NotificationsComponent}
+  { path: 'notifications', component: NotificationsComponent},
+  { path: 'job-detail', component: JobDetailComponent}
 ];
 
 @NgModule({

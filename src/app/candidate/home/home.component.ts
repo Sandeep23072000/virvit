@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
+import { ActivatedRoute } from '@angular/router';
+import { keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -20,11 +22,14 @@ export class HomeComponent implements OnInit {
   item: any;
   submitted: boolean = false;
   savejob: any;
+  apidata: any;
+  iddata: any;
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private timeService: TimeService,
+    private route: ActivatedRoute
   ) {
     this.search2Form = this.fb.group({
       title: ['', Validators.compose([Validators.required])],
@@ -35,6 +40,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.name = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.name);
+
   }
 
   onSubmit() {
@@ -62,7 +68,15 @@ export class HomeComponent implements OnInit {
       console.log(data)
     });
   }
-
-
-
+  jobdetail() {
+    this.searchkey.forEach((key: any) => {
+      console.log(key)
+      this.iddata = key;
+    });
+    console.log(this.iddata.id)
+    this.timeService.getapi('jobs/' + this.iddata.id + '/').subscribe(response => {
+      console.log(response)
+      localStorage.setItem("jobdetail", JSON.stringify(response));
+    });
+  }
 }

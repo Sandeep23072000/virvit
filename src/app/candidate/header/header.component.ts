@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.name =JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.name);
-    // if (this.name === '{}'){
-    //   return;
-    // }
+  }
+  clear(){
+    localStorage.clear();
   }
 }

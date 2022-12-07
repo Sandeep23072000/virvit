@@ -5,17 +5,17 @@
             <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Job Title,Skills or Keyword" required>
             <mat-icon class="searchicon" >search</mat-icon>
-            <span class="valid text-danger fs-5" *ngIf="submitted && searchForm.controls['title'].errors?.['required']">
+            <!-- <span class="valid text-danger fs-5" *ngIf="submitted && searchForm.controls['title'].errors?.['required']">
                 Job Title,Skills or Keyword is required
-            </span>
+            </span> -->
         </div>
         <div class="col-4">
             <input ngForm formControlName="area" type="text" class="form-control form2 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Area, City and Town" required>
                 <mat-icon class="roomicon" >room</mat-icon>
-            <span class="valid2 fs-5 text-danger" *ngIf="submitted && searchForm.controls['area'].errors?.['required']">
+            <!-- <span class="valid2 fs-5 text-danger" *ngIf="submitted && searchForm.controls['area'].errors?.['required']">
                 Area, City and Town is required
-            </span>
+            </span> -->
         </div>
         <div class="col-2 mb-4">
             <button type="submit" class="btn1 mt-5  fs-5 rounded-3" (click)="showdiv()">Search</button>
@@ -32,9 +32,9 @@
         <div class="container-fluid w-50 border border-primary rounded-4 mx-3">
             <div class="row">
                 <div class="col-6">
-                    <div class="mx-3 fw-bold fs-4 mb-3 mt-3 text-primary">
-                        Webtechnology
-                    </div>
+                    <div class="mx-3 fw-bold fs-4 mt-3">
+                        <a class="text-decoration-none" routerLink="/login">{{item.organisation_detail.description}}</a>
+                       </div>
                     <div class="mx-3 mt-2 mb-3 fw-bold text-primary fs-6">
                         {{item.title}}
                     </div>

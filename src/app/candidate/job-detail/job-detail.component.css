@@ -1,0 +1,8 @@
+.jobdetail{
+    margin-top: 150px;
+}
+.btn:hover{
+    background-color: blue;
+    color: white !important;
+    border: none;
+}

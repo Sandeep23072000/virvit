@@ -29,9 +29,9 @@ export class Landingpage1Component {
 
   onSubmit(){
     this.submitted = true;
-    if (this.searchForm.invalid) {
-      return;
-    }
+    // if (this.searchForm.invalid) {
+    //   return;
+    // }
     if(this.searchForm.valid)
     this.searchForm.value;
     console.log(this.searchForm.value); 

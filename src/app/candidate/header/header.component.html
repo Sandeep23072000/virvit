@@ -16,7 +16,7 @@
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button class="name" ngbDropdownItem routerLink="/candidate/profile">Edit Profile</button>
                     <button class="name" ngbDropdownItem routerLink="/candidate/jobapplication">Job Applications</button>
-                    <button class="text-danger fw-bold" ngbDropdownItem routerLink="">Logout</button>
+                    <button class="text-danger fw-bold" ngbDropdownItem routerLink="" (click)="clear()">Logout</button>
                 </div>
             </div>
         </div>

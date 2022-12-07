@@ -16,6 +16,7 @@ import { JobapplicationComponent } from './jobapplication/jobapplication.compone
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NgxMatSelectSearchModule, } from 'ngx-mat-select-search';
 import { MatSelectModule } from '@angular/material/select';
+import { JobDetailComponent } from './job-detail/job-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     ProfileComponent,
     PrivacyComponent,
     JobapplicationComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    JobDetailComponent
   ],
   imports: [
     CommonModule,

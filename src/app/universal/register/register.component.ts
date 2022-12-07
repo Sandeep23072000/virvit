@@ -56,18 +56,18 @@ export class RegisterComponent {
 
   get signupFormControl() {
     return this.registerForm.controls;
-    function passwordMatch(password: any, confirmpassword: any) {
-      return function (form: AbstractControl) {
-        const passwordvalue = form.get(password)?.value
-        const confirmPasswordValue = form.get(confirmpassword)?.value
+    // function passwordMatch(password: any, confirmpassword: any) {
+    //   return function (form: AbstractControl) {
+    //     const passwordvalue = form.get(password)?.value
+    //     const confirmPasswordValue = form.get(confirmpassword)?.value
 
-        if (passwordvalue === confirmPasswordValue) {
-          return null;
+    //     if (passwordvalue === confirmPasswordValue) {
+    //       return null;
 
-        }
-        return { passwordMissmatchError: true }
-      }
-    }
+    //     }
+    //     return { passwordMissmatchError: true }
+    //   }
+    // }
   }
   getControl(name: any): AbstractControl | null {
     return this.registerForm.get(name)
@@ -77,7 +77,7 @@ export class RegisterComponent {
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       console.log('Your form has been submitted', this.registerForm.value);
-      this.http.post('http://https://virvit.mydevpartner.website/vvapi/v1/signup/', this.registerForm.value).subscribe((data: any) => {
+      this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/', this.registerForm.value).subscribe((data: any) => {
         console.log(data);
       })
     }
@@ -85,12 +85,12 @@ export class RegisterComponent {
       console.log('error');
     }
   }
-  passwordMatchError() {
-    return (
-      this.registerForm.getError('mismatch') &&
-      this.registerForm.get('confirmPassword')?.touched
-    );
-  }
+  // passwordMatchError() {
+  //   return (
+  //     this.registerForm.getError('mismatch') &&
+  //     this.registerForm.get('confirmPassword')?.touched
+  //   );
+  // }
 
 }
 

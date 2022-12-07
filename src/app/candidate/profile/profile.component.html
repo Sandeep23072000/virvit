@@ -32,7 +32,7 @@
                                 </div>
 
                             </div>
-                            
+
                             <input type="text" formControlName="mobile"
                                 class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                 value="" placeholder="Phone" [readOnly]="true">
@@ -126,8 +126,8 @@
                             <img [src]="url" alt="img" class="image rounded-circle mb-4"><br>
                             <input class="d-none" type="file" id="uploadimage" (change)="onSelectFile($event)">
                             <label for="uploadimage">
-                                <mat-icon class="imageicon text-primary fs-5" aria-hidden="false" aria-label="Example icon"
-                                    fontIcon="open_in_browser"></mat-icon>
+                                <mat-icon class="imageicon text-primary fs-5" aria-hidden="false"
+                                    aria-label="Example icon" fontIcon="open_in_browser"></mat-icon>
                             </label>
                         </div>
                         <div>
@@ -198,7 +198,7 @@
                                                     <div class="col-6 mb-5">
                                                         <select formControlName="state"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                                                            <option value="selected">State</option>
+                                                            <option value="">State</option>
                                                             <option *ngFor="let state of statelist" [value]="state.id">
                                                                 {{state.name}}</option>
                                                         </select>
@@ -263,7 +263,7 @@
                                                     </p>
                                                     <select type="text" formControlName="organisation"
                                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                                                        <option value="Organisation"></option>
+                                                        <option value="">Organisation</option>
                                                         <option *ngFor="let organisation of organisationlist"
                                                             [value]="organisation.id">
                                                             {{organisation.name}}</option>
@@ -287,7 +287,11 @@
                                                             placeholder="End Date">
                                                         <select formControlName="employment_status"
                                                             class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0">
-                                                            <option selected>Full/Part/Contact</option>
+                                                            <option value="">Employment Status</option>
+                                                            <option value="1">Part Time</option>
+                                                            <option value="2">Full Time</option>
+                                                            <option value="3">Contract</option>
+                                                            <option value="4">Remote</option>
                                                         </select>
                                                     </div>
                                                 </div>
