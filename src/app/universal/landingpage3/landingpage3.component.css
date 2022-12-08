@@ -16,3 +16,14 @@ div.container2{
     border-color: blue;
     transform: scale(1.05);
 }
+span.carousel-control-prev-icon{
+    color: blue;
+}
+span.carousel-control-prev-icon{
+   background-color: rgb(92, 92, 237);
+   height: 60px;
+}
+ span.carousel-control-next-icon{
+    background-color: rgb(92, 92, 237);
+    height: 60px;
+}

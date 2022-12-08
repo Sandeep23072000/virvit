@@ -13,7 +13,8 @@ import { Landingpage3Component } from './landingpage3/landingpage3.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
-import {  MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {  MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
+    MatSelectModule,
   ]
 })
 export class UniversalModule { }

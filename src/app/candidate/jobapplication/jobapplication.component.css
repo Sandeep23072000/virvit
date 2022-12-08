@@ -6,11 +6,11 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 nav-tabs .nav-item.show, .nav-tabs .nav-link {
     color: blue;
     background-color: white;
-    border-color: blue;
-    border-radius: 15px;
-    padding-left: 380px;
-    padding-right: 380px;
-    margin-left: 50px;
+    border-color: gray;
+    border-radius: 12px;
+    padding-left: 350px;
+    padding-right: 350px;
+    margin-left: 80px;
     font-weight: bold;
     font-size: 22px;
     padding-top: 18px;
@@ -20,12 +20,15 @@ nav-tabs .nav-item.show, .nav-tabs .nav-link {
     margin-left: 450px;
     border-color: blue;
     color: blue;
-    padding-left: 110px;
-    padding-right: 110px;
+    padding-left: 90px;
+    padding-right: 90px;
     font-weight: bold;
     margin-top: 40px;
 }
 .btn:hover{
     color: white;
     background-color: blueviolet;
+}
+.datacontainer{
+    padding-bottom: 150px;
 }

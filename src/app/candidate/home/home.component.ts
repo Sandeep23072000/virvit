@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   apidata: any;
   iddata: any;
   searchdata: any;
+  btn1: any;
 
   constructor(
     private fb: FormBuilder,

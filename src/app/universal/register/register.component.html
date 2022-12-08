@@ -5,7 +5,7 @@
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row" style="margin: top 60px;">
-                    <div class="col-4">
+                    <div class="col-5">
                         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                             <div class="form mx-5">
                                 <input ngModel type="text" formControlName="firstname"
@@ -29,9 +29,8 @@
                                         *ngIf="submitted && registerForm.controls.email.errors?.['required']">
                                         email is required
                                     </span>
-                                    <div class="text-danger" *ngIf="submitted && signupFormControl.email.errors">Email
-                                        must be a valid
-                                        email address
+                                    <div class="text-danger" *ngIf="submitted && registerForm.controls.email.errors">
+                                        Email must be a valid email address
                                     </div>
                                 </div>
                                 <div class="row">
@@ -72,13 +71,13 @@
                                             Mobile Phone Number is required
                                         </span>
                                     </div>
-                                    <select formControlName="skill"
-                                        class="form-select text-black-50  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                        required>
-                                        <option value="">Skills</option>
-                                        <option *ngFor="let skill of skillslist" [value]="skill.id"> {{skill.name}}
-                                        </option>
-                                    </select>
+                                    <mat-select formControlName="skill"
+                                        class="form-select text-black-50 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
+                                        placeholder="Skills" [multiple]="true">
+                                        <mat-option *ngFor="let skill of skillslist " [value]="skill.id">
+                                            {{skill.name}}
+                                        </mat-option>
+                                    </mat-select>
                                     <span class="text-danger"
                                         *ngIf="submitted && registerForm.controls.skill.errors?.['required']">
                                         Skills is required
@@ -109,6 +108,7 @@
                                     </span>
                                     <div>
                                         <input ngModel formControlName="resume" type="file" id="resume"
+                                            (change)="resumeupload($event)"
                                             class="form-control d-none  mt-4  shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                             placeholder="Upload Resume">
                                         <label
@@ -123,10 +123,9 @@
                                         </span>
                                     </div>
                                     <div>
-                                        <input matInput
+                                        <input ngModel formControlName="password"
                                             class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                                            placeholder="Password" [type]="hide ? 'password' : 'text'"
-                                            formControlName="password" required>
+                                            placeholder="Password" [type]="hide ? 'password' : 'text'" required>
                                         <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
                                             'visibility_off' :
                                             'visibility'}}</mat-icon>
@@ -140,16 +139,12 @@
                                             *ngIf="submitted && registerForm.controls.password.errors?.['required']">
                                             password is required
                                         </span>
-                                        <input
+                                        <input ngModel formControlName="confirmpassword"
                                             class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                                            placeholder="Confirm Password" [type]="hide ? 'password' : 'text'"
-                                            formControlName="confirmpassword" required>
+                                            placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" required>
                                         <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
                                             'visibility_off' :
                                             'visibility'}}</mat-icon>
-                                        <!-- <input ngModel formControlName="confirmpassword" type="password"
-                                            class="form-control  mb-2 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                            placeholder="Confirm Password" required> -->
                                         <span class="text-danger"
                                             *ngIf="submitted && registerForm.controls.confirmpassword.errors?.['required']">
                                             confirm password is required
@@ -161,9 +156,10 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn1" data-tongle="button">Register</button>
+                                        <button type="submit" class="btn1 py-2 fw-bold"
+                                            data-tongle="button">Register</button>
                                     </div>
-                                    <div class="para">
+                                    <div class="para fs-6">
                                         <p class="text-center">By continuing your acknowledgement that you accept
                                             Virvit's <a class="text-decoration-none " href="#"> Privacy policies</a> and
                                             <a class="text-decoration-none" href="#"> Terms & Conditions</a>
@@ -174,9 +170,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-8">
+                    <div class="col-7">
                         <img src="../assets/Candidate_Registration.png" alt="candidate"
-                            style=" width: 735px;margin: 70px 200px;">
+                            style=" width: 690px;margin: 100px 200px;">
                     </div>
                 </div>
             </div>
@@ -192,19 +188,19 @@
                             <p class="text-primary text-center fs-4 mt-4 fw-bold">Journey To Find The Right Candidate!
                             </p>
                             <p class="text-center fs-5 text-secondary fw-bold">Create your employer's account now </p>
-                            <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                                <input type="text"
+                            <form class="form-horizontal" [formGroup]="employerForm" (ngSubmit)="onSubmit()">
+                                <input type="text" formControlName="email"
                                     class=" form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                     placeholder="Email/Login ID" required>
                                 <span class="text-danger "
-                                    *ngIf="submitted && registerForm.controls.email.errors?.['required']">
+                                    *ngIf="submitted && employerForm.controls.email.errors?.['required']">
                                     Email/Login ID is required
                                 </span>
-                                <input type="text"
+                                <input type="text" formControlName="contectpersion"
                                     class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                     placeholder="Contact Person Names" required>
                                 <span class="text-danger"
-                                    *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                                    *ngIf="submitted && employerForm.controls.firstname.errors?.['required']">
                                     Contect Person Name is required
                                 </span>
                                 <div>
@@ -212,16 +208,16 @@
                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         placeholder="Mobile Phone Number" required>
                                     <span class="text-danger"
-                                        *ngIf="submitted && registerForm.controls.mobilephonenumber.errors?.['required']">
+                                        *ngIf="submitted && employerForm.controls.mobilephonenumber.errors?.['required']">
                                         Mobile Phone Number is required
                                     </span>
                                 </div>
                                 <div>
-                                    <input ngModel type="text" formControlName="mobilephonenumber"
+                                    <input ngModel type="text" formControlName="businessname"
                                         class="form-control  mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                         placeholder="Registered Business Name" required>
                                     <span class="text-danger"
-                                        *ngIf="submitted && registerForm.controls.firstname.errors?.['required']">
+                                        *ngIf="submitted && employerForm.controls.firstname.errors?.['required']">
                                         Registered Business Name is required
                                     </span>
                                 </div>

@@ -1,28 +1,30 @@
 <app-header></app-header>
 <ul ngbNav [(activeId)]="activeId" #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
     <li [ngbNavItem]="1">
-        <a ngbNavLink>Applied Job</a>
+        <a ngbNavLink> <mat-icon class="icon mx-1 text-primary">verified_user</mat-icon>Applied Job</a>
         <ng-template ngbNavContent>
-            <div class="mx-5 mt-5" *ngFor="let item of apply2">
-                <div class="container-fluid w-100 border border-primary rounded-4 mx-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mx-3 fw-bold fs-4 mt-3 text-primary">
-                                {{item?.job_detail.organisation_detail.description}}
+            <div class="datacontainer">
+                <div class="mx-5 mt-5" *ngFor="let item of apply2">
+                    <div class="container-fluid w-100 border border-primary rounded-4 mx-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mx-3 fw-bold fs-4 mt-3 text-primary">
+                                    {{item?.job_detail.organisation_detail.description}}
+                                </div>
+                                <div class="mx-3 mt-2 fw-bold text-primary">
+                                    {{item?.job_detail.title}}
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    {{item?.job_detail.experiance_from}} - {{item?.job_detail.experiance_to}} years
+                                    Experience
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    SGD - {{item?.job_detail.min_salary}} - {{item?.job_detail.max_salary}}
+                                </div>
                             </div>
-                            <div class="mx-3 mt-2 fw-bold text-primary">
-                                {{item?.job_detail.title}}
+                            <div class="col-6">
+                                <button type="submit" class="btn fs-6 rounded-3">Applied</button>
                             </div>
-                            <div class="text-secondary mt-1 mx-3 mb-2">
-                                {{item?.job_detail.experiance_from}} - {{item?.job_detail.experiance_to}} years
-                                Experience
-                            </div>
-                            <div class="text-secondary mt-1 mx-3 mb-2">
-                                SGD - {{item?.job_detail.min_salary}} - {{item?.job_detail.max_salary}}
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" class="btn fs-6 rounded-3">Applied</button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +32,9 @@
         </ng-template>
     </li>
     <li [ngbNavItem]="2">
-        <a ngbNavLink (click)="save(this.loginkey)">Saved Job</a>
+        <a ngbNavLink (click)="save(this.loginkey)">
+            <mat-icon class="icon mx-1 text-primary">turned_in</mat-icon>
+            Saved Job</a>
         <ng-template ngbNavContent>
             <div class="mx-5 mt-5" *ngFor="let item of apply2">
                 <div class="container-fluid w-100 border border-primary rounded-4 mx-3">

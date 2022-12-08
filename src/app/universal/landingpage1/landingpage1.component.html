@@ -4,7 +4,7 @@
         <div class="col-6">
             <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Job Title,Skills or Keyword" required>
-            <mat-icon class="searchicon" >search</mat-icon>
+            <mat-icon class="searchicon">search</mat-icon>
             <!-- <span class="valid text-danger fs-5" *ngIf="submitted && searchForm.controls['title'].errors?.['required']">
                 Job Title,Skills or Keyword is required
             </span> -->
@@ -12,7 +12,7 @@
         <div class="col-4">
             <input ngForm formControlName="area" type="text" class="form-control form2 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Area, City and Town" required>
-                <mat-icon class="roomicon" >room</mat-icon>
+            <mat-icon class="roomicon">room</mat-icon>
             <!-- <span class="valid2 fs-5 text-danger" *ngIf="submitted && searchForm.controls['area'].errors?.['required']">
                 Area, City and Town is required
             </span> -->
@@ -28,29 +28,37 @@
     </h1>
 </div>
 <div>
-    <div class="mx-5 mt-3" *ngFor="let item of searchkey">
-        <div class="container-fluid w-50 border border-primary rounded-4 mx-3">
-            <div class="row">
-                <div class="col-6">
-                    <div class="mx-3 fw-bold fs-4 mt-3">
-                        <a class="text-decoration-none" routerLink="/login">{{item.organisation_detail.description}}</a>
-                       </div>
-                    <div class="mx-3 mt-2 mb-3 fw-bold text-primary fs-6">
-                        {{item.title}}
+    <div class=" mx-5 mt-5">
+        <div class="container-fluid ">
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-6 mt-5 " *ngFor="let item of searchkey">
+                    <div class="border border-primary rounded-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mx-3 fw-bold fs-4 mt-3 text-primary">
+                                    <a class="text-decoration-none" routerLink="/login">{{item.organisation_detail.description}}</a>
+                                </div>
+                                <div class="mx-3 mt-2 fw-bold text-primary">
+                                    {{item.title}}
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    {{item.experiance_from}} - {{item.experiance_to}} years Experience
+                                </div>
+                                <div class="text-secondary mt-1 mx-3 mb-2">
+                                    SGD - {{item.min_salary}} - {{item.max_salary}}
+                                </div>
+                            </div>
+                            <div class="col-3">
+
+                                <button type="submit" class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"
+                                    routerLink="/login">Apply</button>
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"
+                                    routerLink="/login">Save</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-secondary mt-1 mx-3 mb-3 fs-6">
-                        {{item.experiance_from}} - {{item.experiance_to}} years Experience
-                    </div>
-                    <div class="text-secondary mt-1 mx-3 fs-6">
-                        SGD - {{item.min_salary}} - {{item.max_salary}}
-                    </div>
-                </div>
-                <div class="col-3">
-                    <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"
-                        routerLink="/login">Apply</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4" routerLink="/login">Save</button>
                 </div>
             </div>
         </div>
@@ -67,7 +75,8 @@
                     </button>
                     <div class="carousel-item active d-flux m-2">
                         <div class="card rounded-5 p-3  mx-5">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6"> EDI Specialist, ITX</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login"> EDI
+                                Specialist, ITX</a>
                             <p class="fs-6">
                                 East <br>
                                 SDG-7,000-8,000 <br>
@@ -76,7 +85,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3   mx-4">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Technical Officer</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
+                                routerLink="/login">Technical Officer</a>
                             <p class="fs-6">
                                 South <br>
                                 SDG-4,000-5,000 <br>
@@ -86,7 +96,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Software Engineer</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
+                                routerLink="/login">Software Engineer</a>
                             <p class="fs-6">
                                 EAst <br>
                                 SDG-7,000-8,000 <br>
@@ -96,7 +107,8 @@
                         </div>
 
                         <div class="card rounded-5 p-3   mx-5">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Computer Engineer</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
+                                routerLink="/login">Computer Engineer</a>
                             <p class="fs-6">
                                 East <br>
                                 SDG-7,000-8,000 <br>
@@ -106,8 +118,9 @@
                         </div>
 
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">IT Network</h6>
-                            <p class="fs-6"> 
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login">IT
+                                Network</a>
+                            <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
                                 5-6 Years Experience
@@ -131,7 +144,8 @@
                     </button>
                     <div class="carousel-item active d-flux m-2">
                         <div class="card rounded-5 p-3  mx-5 fs-6">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">App Developer</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login">App
+                                Developer</a>
                             <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
@@ -140,7 +154,8 @@
 
                         </div>
                         <div class="card rounded-5 p-3  mx-5">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">Web Developer</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login">Web
+                                Developer</a>
                             <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>
@@ -149,7 +164,8 @@
 
                         </div>
                         <div class="card rounded-5 p-3  mx-4">
-                            <h6 class="text-primary mt-3 mb-3 fw-bold fs-6">SDE-1</h6>
+                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
+                                routerLink="/login">SDE-1</a>
                             <p class="fs-6">
                                 West <br>
                                 SDG-10,000-13,000 <br>

@@ -14,7 +14,11 @@
                             <div class="form">
                                 <input formControlName="old_password"
                                     class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                    type="text" placeholder="Current Password    -   ************">
+                                    type="text" placeholder="Current Password    -   ************" required>
+                                <span class="text-danger fs-6"
+                                    *ngIf="submitted && privacyForm.controls['old_password'].errors?.['required']">
+                                    Current Password is required
+                                </span>
                             </div>
                             <div class="mx-5">
                                 <button type="button" class="btn btn-primary bg-primary text-white px-5 mt-5"
@@ -26,14 +30,22 @@
                             <div class="form">
                                 <input formControlName="new_password"
                                     class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                    type="text" placeholder="New Password       -   ************"><br>
-                                <input formcontrolname="confirmpassword"
+                                    type="text" placeholder="New Password       -   ************" required>
+                                <span class="text-danger fs-6"
+                                    *ngIf="submitted && privacyForm.controls['new_password'].errors?.['required']">
+                                    New Password is required
+                                </span><br>
+                                <input formControlName="confirm_password"
                                     class="form-control fs-5 mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
-                                    type="text" placeholder="Confirm Password    -   ************">
+                                    type="text" placeholder="Confirm Password       -   ************" required>
+                                <span class="text-danger fs-6"
+                                    *ngIf="submitted && privacyForm.controls['confirm_password'].errors?.['required']">
+                                    Confirm Password is required
+                                </span>
                             </div>
                             <div class="mx-5">
                                 <button type="submit" class="btn btn-primary bg-primary text-white px-5 mt-5"
-                                    (click)="showdiv2()"  (ngSubmit)="onSubmit()">Submit</button>
+                                    (click)="onSubmit()">Submit</button>
                             </div>
                         </div>
                     </div>

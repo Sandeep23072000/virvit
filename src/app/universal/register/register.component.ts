@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms"
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent  implements OnInit{
   skillslist: any;
   submitted = false;
   data: any;
+  uploadresume: any;
   preferencelist: any;
   registerForm = this.fb.group({
     firstname: ['', Validators.required],
@@ -26,7 +28,15 @@ export class RegisterComponent {
     password: ['', Validators.required],
     confirmpassword: ['', Validators.required],
     resume: ['', Validators.required],
-    device_id: '1',
+    // device_id: '1',
+  });
+
+  employerForm = this.fb.group({
+    email: ['', Validators.required],
+    firstname: ['', Validators.required],
+    contectpersion: ['', Validators.required],
+    mobilephonenumber: ['', Validators.required],
+    businessname: ['', Validators.required],
   });
   hide = true;
   constructor(
@@ -40,7 +50,8 @@ export class RegisterComponent {
     console.log(this.preferencelist);
 
   }
-
+  ngOnInit(): void {
+  }
   addskill() {
     this.http.get('https://virvit.mydevpartner.website/vvapi/v1/skill/').subscribe((data: any) => {
       console.log(data.results);
@@ -53,10 +64,12 @@ export class RegisterComponent {
       this.preferencelist = data.results;
     })
   }
-
-  get signupFormControl() {
-    return this.registerForm.controls;
-    // function passwordMatch(password: any, confirmpassword: any) {
+  resumeupload(event : any){
+    const resume = event.target.files[0];
+    console.log(resume)
+    this.uploadresume = resume;
+  }
+    //  passwordMatch(password: any, confirmpassword: any) {
     //   return function (form: AbstractControl) {
     //     const passwordvalue = form.get(password)?.value
     //     const confirmPasswordValue = form.get(confirmpassword)?.value
@@ -68,19 +81,41 @@ export class RegisterComponent {
     //     return { passwordMissmatchError: true }
     //   }
     // }
-  }
-  getControl(name: any): AbstractControl | null {
-    return this.registerForm.get(name)
-  }
+  // getControl(name: any): AbstractControl | null {
+  //   return this.registerForm.get(name)
+  // }
   onSubmit() {
+
     this.submitted = true;
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       console.log('Your form has been submitted', this.registerForm.value);
-      this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/', this.registerForm.value).subscribe((data: any) => {
-        console.log(data);
-      })
-    }
+
+    const formdata : any = new FormData();
+
+    formdata.append('first_name',this.registerForm.get('firstname')?.value);
+    formdata.append('last_name',this.registerForm.get('lastname')?.value);
+    formdata.append('email',this.registerForm.get('email')?.value);
+    formdata.append('mobile',this.registerForm.get('mobilephonenumber')?.value);
+    formdata.append('gender',this.registerForm.get('gender')?.value);
+    formdata.append('dob',this.registerForm.get('birthdate')?.value);
+    formdata.append('skillList',JSON.stringify(this.registerForm.get('skill')?.value));
+    formdata.append('job_preference',this.registerForm.get('jobpreference')?.value);
+    formdata.append('resume',this.uploadresume);
+    formdata.append('password',this.registerForm.get('password')?.value);
+    formdata.append('cpassword',this.registerForm.get('confirmpassword')?.value);
+    formdata.append('start_work',this.registerForm.get('startofwork')?.value);
+    formdata.append('device_id','1');
+    formdata.append('status','Active');
+    formdata.append('dial_code','+91');
+    formdata.append('role','Candidate');
+    formdata.append('country_code','IN');
+     
+    this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/',formdata).subscribe(data => {
+      console.log(data);
+  });
+}
+  
     else {
       console.log('error');
     }
