@@ -55,13 +55,13 @@
     </div>
 </div>
 <div>
-    <div class="mx-5 mt-5" *ngFor="let item of searchkey">
+    <div class="mx-5 mt-5" *ngFor="let item of searchdata">
         <div class="container-fluid w-50 border border-primary rounded-4 mx-3">
             <div>
                 <div class="row">
                     <div class="col-6">
                         <div class="mx-3 fw-bold fs-4 mt-3 text-primary">
-                            <a class="text-decoration-none" [routerLink]="['/candidate/job-detail']" [queryParams]="{link: 'abc' }" (click)="jobdetail()">{{item.organisation_detail.description}}</a>
+                            <a class="text-decoration-none" [routerLink]="['/candidate/job-detail/',this.iddata]">{{item.organisation_detail.description}}</a>
                         </div>
                         <div class="mx-3 mt-2 fw-bold text-primary">
                             {{item.title}}

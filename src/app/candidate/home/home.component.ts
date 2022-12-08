@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   savejob: any;
   apidata: any;
   iddata: any;
+  searchdata: any;
 
   constructor(
     private fb: FormBuilder,
@@ -51,10 +52,16 @@ export class HomeComponent implements OnInit {
     if (this.search2Form.valid)
       this.search2Form.value;
     this.http.post('https://virvit.mydevpartner.website/vvapi/v1/job-filter/', this.search2Form.value).subscribe(data => {
-      localStorage.setItem("search", JSON.stringify(data));
+      // localStorage.setItem("search", JSON.stringify(data));
+      this.searchdata = data;
+      console.log(data);
+      this.searchdata.forEach((key: any) => {
+        console.log(key)
+        this.iddata = key.id;
+      });
     });
-    this.searchkey = JSON.parse(localStorage.getItem("search") || '{}');
-    console.log(this.searchkey);
+    // this.searchkey = JSON.parse(localStorage.getItem("search") || '{}');
+    // console.log(this.searchkey);
   }
   save(id: number) {
     const data = { job: id, user: this.name.id }
@@ -68,15 +75,8 @@ export class HomeComponent implements OnInit {
       console.log(data)
     });
   }
-  jobdetail() {
-    this.searchkey.forEach((key: any) => {
-      console.log(key)
-      this.iddata = key;
-    });
-    console.log(this.iddata.id)
-    this.timeService.getapi('jobs/' + this.iddata.id + '/').subscribe(response => {
-      console.log(response)
-      localStorage.setItem("jobdetail", JSON.stringify(response));
-    });
-  }
+  // this.searchdata.forEach((key: any) => {
+  //   console.log(key)
+  //   this.iddata = key.id;
+  // });
 }

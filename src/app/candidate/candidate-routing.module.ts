@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent},
   { path: 'jobapplication', component: JobapplicationComponent},
   { path: 'notifications', component: NotificationsComponent},
-  { path: 'job-detail', component: JobDetailComponent}
+  { path: 'job-detail/:id', component: JobDetailComponent}
 ];
 
 @NgModule({
