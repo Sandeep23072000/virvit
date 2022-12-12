@@ -36,7 +36,8 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mx-3 fw-bold fs-4 mt-3 text-primary">
-                                    <a class="text-decoration-none" routerLink="/login">{{item.organisation_detail.description}}</a>
+                                    <a class="text-decoration-none"
+                                        routerLink="/login">{{item.organisation_detail.description}}</a>
                                 </div>
                                 <div class="mx-3 mt-2 fw-bold text-primary">
                                     {{item.title}}
@@ -73,18 +74,22 @@
                         <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                         <span class="visually-hidden"></span>
                     </button>
-                    <div class="carousel-item active d-flux m-2">
-                        <div class="card rounded-5 p-3  mx-5">
-                            <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login"> EDI
-                                Specialist, ITX</a>
-                            <p class="fs-6">
-                                East <br>
-                                SDG-7,000-8,000 <br>
-                                4-5 Years Experience
-                            </p>
+                    <div class="carousel-item active">
+                        <div class="" *ngFor="let item of jobsdata">
+                            <div class="card rounded-5 p-3  mx-5">
+                                <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
+                                    routerLink="/login">{{item.title}}</a>
+                                <h3>
+                                    {{item.state_detail.name}} {{item.state_detail.country_detail.name}}
+                                </h3>
+                                <h3> SGD - {{item.min_salary}}-{{item.max_salary}} </h3>
+                                <h3>
+                                    {{item.experiance_from}} - {{item.experiance_to}} Years Experience
+                                </h3>
+                            </div>
                         </div>
 
-                        <div class="card rounded-5 p-3   mx-4">
+                        <!-- <div class="card rounded-5 p-3   mx-4">
                             <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
                                 routerLink="/login">Technical Officer</a>
                             <p class="fs-6">
@@ -93,9 +98,9 @@
                                 2-3 Years Experience
                             </p>
 
-                        </div>
+                        </div> -->
 
-                        <div class="card rounded-5 p-3  mx-4">
+                        <!-- <div class="card rounded-5 p-3  mx-4">
                             <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
                                 routerLink="/login">Software Engineer</a>
                             <p class="fs-6">
@@ -104,9 +109,9 @@
                                 4-5 Years Experience
                             </p>
 
-                        </div>
+                        </div> -->
 
-                        <div class="card rounded-5 p-3   mx-5">
+                        <!-- <div class="card rounded-5 p-3   mx-5">
                             <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none"
                                 routerLink="/login">Computer Engineer</a>
                             <p class="fs-6">
@@ -115,9 +120,9 @@
                                 4-5 Years Experience
                             </p>
 
-                        </div>
+                        </div> -->
 
-                        <div class="card rounded-5 p-3  mx-4">
+                        <!-- <div class="card rounded-5 p-3  mx-4">
                             <a class="text-primary mt-3 mb-3 fw-bold fs-6 text-decoration-none" routerLink="/login">IT
                                 Network</a>
                             <p class="fs-6">
@@ -126,7 +131,7 @@
                                 5-6 Years Experience
                             </p>
 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -135,7 +140,7 @@
                 <span class="visually-hidden"></span>
             </button>
         </ng-template>
-        <ng-template ngbSlide>
+        <!-- <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
                 <div class="carousel-inner mt-5 mb-5">
                     <button type="button" class="carousel-control-prev text-primary">
@@ -180,7 +185,7 @@
                 <span aria-hidden="true" class="carousel-control-next-icon"></span>
                 <span class="visually-hidden"></span>
             </button>
-        </ng-template>
+        </ng-template> -->
     </ngb-carousel>
 </div>
 

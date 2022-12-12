@@ -16,6 +16,7 @@ export class Landingpage1Component {
   searchkey: any;
   item: any;
   submitted: boolean=false;
+  jobsdata: any;
   constructor(
     private fb : FormBuilder,
     private http : HttpClient
@@ -25,7 +26,11 @@ export class Landingpage1Component {
       title: ['', Validators.compose([Validators.required])],
       area: ['', Validators.compose([Validators.required])],
     });
-  }
+    this.http.get('https://virvit.mydevpartner.website/vvapi/v1/jobs/').subscribe((response: any) => {
+      console.log(response.results);
+      this.jobsdata = response.results;
+  });
+}
 
   onSubmit(){
     this.submitted = true;

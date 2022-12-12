@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { Landingpage1Component } from './landingpage1/landingpage1.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { Landingpage3Component } from './landingpage3/landingpage3.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthGuard } from '../authgaurd/auth.guard';
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'contectus', component: Landingpage3Component},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'forgotpassword', component: ForgotPasswordComponent}
 ];
 
 @NgModule({

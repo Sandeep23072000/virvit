@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     Landingpage3Component,
     LoginComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
     
   ],
   imports: [
