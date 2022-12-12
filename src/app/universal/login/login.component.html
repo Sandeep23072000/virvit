@@ -1,7 +1,7 @@
 <app-header></app-header>
 <ul ngbNav #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
     <li ngbNavItem>
-            <a ngbNavLink>Candidate Login</a>
+        <a ngbNavLink>Candidate Login</a>
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row">
@@ -16,16 +16,17 @@
                                         *ngIf="submitted && checkoutForm.controls.username.errors?.['required']">
                                         username is required
                                     </span>
-                                    <div class="text-danger" *ngIf="submitted && registerFormControl.username.errors">Email must be a valid
+                                    <div class="text-danger" *ngIf="submitted && registerFormControl.username.errors">
+                                        Email must be a valid
                                         email address
                                     </div>
-                                        <input matInput ngmodel type="password" formControlName="password"
-                                            class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                                            placeholder="Password" [type]="hide ? 'password' : 'text'"
-                                            formControlName="password" required>
-                                        <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
-                                            'visibility_off' :
-                                            'visibility'}}</mat-icon>
+                                    <input matInput ngmodel type="password" formControlName="password"
+                                        class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                        placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                        formControlName="password" required>
+                                    <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                        'visibility_off' :
+                                        'visibility'}}</mat-icon>
                                     <span class="text-danger"
                                         *ngIf="submitted && checkoutForm.controls.password.errors?.['required']">
                                         Password is required
@@ -37,7 +38,8 @@
                                             Remember me
                                         </label>
                                         <span>
-                                            <a class="span text-primary  fs-6 text-decoration-none" routerLink="/forgotpassword"> Forgot Password ?</a>
+                                            <a class="span text-primary  fs-6 text-decoration-none"
+                                                routerLink="/forgotpassword"> Forgot Password ?</a>
                                         </span>
 
                                         <div class="d-grid">
@@ -91,7 +93,7 @@
         </ng-template>
     </li>
     <li ngbNavItem>
-            <a ngbNavLink>Employer Login</a>
+        <a ngbNavLink>Employer Login</a>
         <ng-template ngbNavContent>
             <div class="container-fluid">
                 <div class="row mt-5">
@@ -107,12 +109,12 @@
                                     Email/Login ID is required
                                 </span>
                                 <input matInput ngmodel type="password"
-                                class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
-                                placeholder="Password" [type]="hide ? 'password' : 'text'"
-                                formControlName="password" required>
-                            <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
-                                'visibility_off' :
-                                'visibility'}}</mat-icon>
+                                    class="form-control mt-4 shadow-none border border-3 border-start-0 border-end-0 border-top-0 "
+                                    placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                    formControlName="password" required>
+                                <mat-icon class="eyeicon text-primary" matSuffix (click)="hide = !hide">{{hide ?
+                                    'visibility_off' :
+                                    'visibility'}}</mat-icon>
                                 <!-- <input type="text"
                                     class="form form-control mt-5 shadow-none border border-3 border-start-0 border-end-0 border-top-0"
                                     placeholder="Password" required> -->
@@ -121,7 +123,8 @@
                                     Password is required
                                 </span>
                                 <div class="form-check mt-2">
-                                    <div class=" text-primary mx-5 mt-5 font-weight-bold text-end fs-6"> Forgot Password ?
+                                    <div class=" text-primary mx-5 mt-5 font-weight-bold text-end fs-6"> Forgot Password
+                                        ?
                                     </div>
                                     <div class=" form-check" style="text-align: left;">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -130,7 +133,8 @@
                                         </label>
                                     </div>
                                     <div class="d-grid">
-                                        <button type="submit" class=" btn btn-primary mx-3 mt-4 mb-3 fw-bold">Login</button>
+                                        <button type="submit"
+                                            class=" btn btn-primary mx-3 mt-4 mb-3 fw-bold">Login</button>
                                     </div>
 
                                 </div>

@@ -1,7 +1,9 @@
 .social{
-    padding-left: 380px;
+    padding-left: 580px;
 }
 .footer{
-    z-index: 100;
-    
+    z-index: 100;  
+}
+.image{
+    height: 40px;
 }
