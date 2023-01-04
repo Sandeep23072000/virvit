@@ -12,8 +12,8 @@ button.btn:hover{
     border-color: blue;
 }
 .btn1 {
-    padding-right: 4.5rem;
-    padding-left: 4.5rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
     background-color: white;
     color: blue;
     padding-top: 11px;
@@ -41,7 +41,7 @@ div.container2{
     transform: scale(1.05);
 }
 .form1 {
-    margin-left: 280px;
+    margin-left: 100px;
 }
 .form2 {
     width: 75%;
@@ -55,7 +55,7 @@ div.container2{
 }
 .searchicon{
     position: absolute;
-    margin-left: 300px;
+    margin-left: 130px;
     margin-top: -40px;
     font-size: 30px;
     color: blue;

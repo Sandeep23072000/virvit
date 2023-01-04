@@ -1,8 +1,8 @@
 <app-header></app-header>
-<form [formGroup]="search2Form" (ngSubmit)="onSubmit()">
+<form [formGroup]="search2Form">
     <div class="row  container-fluid  container2">
-        <div class="col-6">
-            <input ngModel formControlName="title" type="text" class="form-control w-50 form1 mt-5 p-1 fs-5 text-center"
+        <div class="col-4">
+            <input ngModel formControlName="title" type="text" class="form-control w-75 form1 mt-5 p-1 fs-5 text-center"
                 value="" placeholder="Job Title,Skills or Keyword" required>
             <mat-icon class="searchicon">search</mat-icon>
             <!-- <span class="valid text-danger fs-5"
@@ -19,7 +19,10 @@
             </span> -->
         </div>
         <div class="col-2 mb-4">
-            <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Search</button>
+            <button type="submit" class="btn1 mt-5  fs-5 rounded-3" (click)="onSubmit()">Search</button>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn1 mt-5  fs-5 rounded-3">Clear</button>
         </div>
     </div>
 </form>
