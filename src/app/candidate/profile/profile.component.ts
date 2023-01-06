@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { __values } from 'tslib';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { __values } from 'tslib';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   namevalue: any;
   profileForm: FormGroup;
   skillslist: any;
@@ -32,8 +33,15 @@ export class ProfileComponent {
     private timeService: TimeService,
     private fb: FormBuilder,
     private http: HttpClient,
+    private spinner: NgxSpinnerService
 
   ) {
+    
+      this.spinner.show();
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 1000);
+       
     this.addskill();
     this.addpreference();
     this.addcountry();
@@ -224,6 +232,7 @@ export class ProfileComponent {
     }
     this.imagefile = event.target.files[0]; 
   }
+  
   onSubmit() {
 
     this.submitted = true;

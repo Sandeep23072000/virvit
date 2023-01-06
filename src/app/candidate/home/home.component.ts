@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { ActivatedRoute } from '@angular/router';
-import { keyframes } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -31,8 +31,13 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private timeService: TimeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
     this.search2Form = this.fb.group({
       title: ['', Validators.compose([Validators.required])],
       area: ['', Validators.compose([Validators.required])],
@@ -46,6 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     this.submitted = true;
     // if (this.search2Form.invalid) {
     //   return;
@@ -56,6 +62,7 @@ export class HomeComponent implements OnInit {
       // localStorage.setItem("search", JSON.stringify(data));
       this.searchdata = data;
       console.log(data);
+      this.spinner.hide();
       this.searchdata.forEach((key: any) => {
         console.log(key)
         this.iddata = key.id;

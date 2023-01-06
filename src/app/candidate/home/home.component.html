@@ -1,4 +1,7 @@
 <app-header></app-header>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white; font-size: 25px;"> Loading... </p>
+</ngx-spinner>
 <form [formGroup]="search2Form">
     <div class="row  container-fluid  container2">
         <div class="col-4">
@@ -80,11 +83,11 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                
+
                                 <button type="submit" class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"
-                                (click)="apply(item.id)">Apply</button>
+                                    (click)="apply(item.id)">Apply</button>
                                 <!-- <button type="submit" [disabled]="item.is_applied==false" class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4">Applied</button> -->
-                                </div>
+                            </div>
                             <div class="col-3">
                                 <button type="submit" class="btn mt-5 fs-5 bg-primary rounded-3 text-white px-4"
                                     (click)="save(item.id)">Save</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeService } from 'src/app/time.service';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-notifications',
@@ -13,7 +14,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor(
     private timeservice: TimeService,
-    private http: HttpClient
+    private http: HttpClient,
+    private spinner: NgxSpinnerService
   ) { 
     this.loginkey = JSON.parse(localStorage.getItem('login') || '{}');
     console.log(this.loginkey);
@@ -24,9 +26,11 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
   }
   notifications(data: any){
+    this.spinner.show();
     this.timeservice.getapi('/notification/?user='+data.id).subscribe(response=>{
       console.log(response);
       this.notifications2 = response.results;
+      this.spinner.hide();
     });
   }
 

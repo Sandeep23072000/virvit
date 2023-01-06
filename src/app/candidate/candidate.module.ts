@@ -17,6 +17,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { NgxMatSelectSearchModule, } from 'ngx-mat-select-search';
 import { MatSelectModule } from '@angular/material/select';
 import { JobDetailComponent } from './job-detail/job-detail.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
     FormsModule,
     NgxMatSelectSearchModule,
     MatSelectModule,
+    NgxSpinnerModule
   ]
 })
 export class CandidateModule { }

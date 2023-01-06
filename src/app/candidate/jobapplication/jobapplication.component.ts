@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-jobapplication',
@@ -23,6 +24,7 @@ export class JobapplicationComponent implements OnInit {
     private httpClient: HttpClient,
     private timeService: TimeService,
     private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
     this.loginkey = JSON.parse(localStorage.getItem("login") || '{}');
     console.log(this.loginkey);
@@ -43,15 +45,19 @@ export class JobapplicationComponent implements OnInit {
       }
   }
   apply(data: any) {
+    this.spinner.show();
     this.timeService.getapi('apply-job/?user=' + data.id).subscribe(response => {
       console.log(response);
       this.apply2 = response.results;
+      this.spinner.hide();
     });
   }
   save(data: any) {
+    this.spinner.show();
     this.timeService.getapi('bookmark-job/?country=' + data.id).subscribe(response => {
       console.log(response);
       this.save2 = response.results;
+      this.spinner.hide();
     });
   }
 }

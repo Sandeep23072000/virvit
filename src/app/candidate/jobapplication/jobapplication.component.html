@@ -1,4 +1,7 @@
 <app-header></app-header>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white; font-size: 25px;"> Loading... </p>
+</ngx-spinner>
 <ul ngbNav [(activeId)]="activeId" #nav="ngbNav" class="nav-tabs" style="margin-top: 160px;border:none">
     <li [ngbNavItem]="1">
         <a ngbNavLink> <mat-icon class="icon mx-1 text-primary">verified_user</mat-icon>Applied Job</a>
@@ -32,6 +35,9 @@
         </ng-template>
     </li>
     <li [ngbNavItem]="2">
+        <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+            <p style="color: white; font-size: 25px;"> Loading... </p>
+        </ngx-spinner>
         <a ngbNavLink (click)="save(this.loginkey)">
             <mat-icon class="icon mx-1 text-primary">turned_in</mat-icon>
             Saved Job</a>

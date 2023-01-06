@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { TimeService } from 'src/app/time.service';
 
 @Component({
@@ -13,12 +14,15 @@ export class JobDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private timeService: TimeService,
+    private spinner: NgxSpinnerService
   ) {
+    this.spinner.show();
     this.data = this.route.snapshot.params['id'];
     console.log(this.route.snapshot.params);
     this.timeService.getapi('jobs/' + this.data + '/').subscribe(response => {
       console.log(response)
       this.jobdetails = response;
+      this.spinner.hide();
     });
     // this.jobdetails.skill_list.forEach((skill:any)=>{
     //   this.skillname = skill.name;
