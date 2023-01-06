@@ -3,13 +3,14 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { __values } from 'tslib';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent  implements OnInit{
+export class RegisterComponent implements OnInit {
   skillslist: any;
   submitted = false;
   data: any;
@@ -42,8 +43,14 @@ export class RegisterComponent  implements OnInit{
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
+    private spinner: NgxSpinnerService
 
   ) {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
+
     this.addskill();
     console.log(this.skillslist);
     this.addpreference();
@@ -64,60 +71,62 @@ export class RegisterComponent  implements OnInit{
       this.preferencelist = data.results;
     })
   }
-  resumeupload(event : any){
+  resumeupload(event: any) {
     const resume = event.target.files[0];
     console.log(resume)
     this.uploadresume = resume;
   }
-    //  passwordMatch(password: any, confirmpassword: any) {
-    //   return function (form: AbstractControl) {
-    //     const passwordvalue = form.get(password)?.value
-    //     const confirmPasswordValue = form.get(confirmpassword)?.value
+  //  passwordMatch(password: any, confirmpassword: any) {
+  //   return function (form: AbstractControl) {
+  //     const passwordvalue = form.get(password)?.value
+  //     const confirmPasswordValue = form.get(confirmpassword)?.value
 
-    //     if (passwordvalue === confirmPasswordValue) {
-    //       return null;
+  //     if (passwordvalue === confirmPasswordValue) {
+  //       return null;
 
-    //     }
-    //     return { passwordMissmatchError: true }
-    //   }
-    // }
+  //     }
+  //     return { passwordMissmatchError: true }
+  //   }
+  // }
   // getControl(name: any): AbstractControl | null {
   //   return this.registerForm.get(name)
   // }
   onSubmit() {
-
+    // this.spinner.show();
     this.submitted = true;
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       console.log('Your form has been submitted', this.registerForm.value);
 
-    const formdata : any = new FormData();
+      const formdata: any = new FormData();
 
-    formdata.append('first_name',this.registerForm.get('firstname')?.value);
-    formdata.append('last_name',this.registerForm.get('lastname')?.value);
-    formdata.append('email',this.registerForm.get('email')?.value);
-    formdata.append('mobile',this.registerForm.get('mobilephonenumber')?.value);
-    formdata.append('gender',this.registerForm.get('gender')?.value);
-    formdata.append('dob',this.registerForm.get('birthdate')?.value);
-    formdata.append('skillList',JSON.stringify(this.registerForm.get('skill')?.value));
-    formdata.append('job_preference',this.registerForm.get('jobpreference')?.value);
-    formdata.append('resume',this.uploadresume);
-    formdata.append('password',this.registerForm.get('password')?.value);
-    formdata.append('cpassword',this.registerForm.get('confirmpassword')?.value);
-    formdata.append('start_work',this.registerForm.get('startofwork')?.value);
-    formdata.append('device_id','1');
-    formdata.append('status','Active');
-    formdata.append('dial_code','+91');
-    formdata.append('role','Candidate');
-    formdata.append('country_code','IN');
-     
-    this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/',formdata).subscribe(data => {
-      console.log(data);
-  });
-}
-  
+      formdata.append('first_name', this.registerForm.get('firstname')?.value);
+      formdata.append('last_name', this.registerForm.get('lastname')?.value);
+      formdata.append('email', this.registerForm.get('email')?.value);
+      formdata.append('mobile', this.registerForm.get('mobilephonenumber')?.value);
+      formdata.append('gender', this.registerForm.get('gender')?.value);
+      formdata.append('dob', this.registerForm.get('birthdate')?.value);
+      formdata.append('skillList', JSON.stringify(this.registerForm.get('skill')?.value));
+      formdata.append('job_preference', this.registerForm.get('jobpreference')?.value);
+      formdata.append('resume', this.uploadresume);
+      formdata.append('password', this.registerForm.get('password')?.value);
+      formdata.append('cpassword', this.registerForm.get('confirmpassword')?.value);
+      formdata.append('start_work', this.registerForm.get('startofwork')?.value);
+      formdata.append('device_id', '1');
+      formdata.append('status', 'Active');
+      formdata.append('dial_code', '+91');
+      formdata.append('role', 'Candidate');
+      formdata.append('country_code', 'IN');
+
+      this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/', formdata).subscribe(data => {
+        console.log(data);
+
+      });
+    }
+
     else {
       console.log('error');
+
     }
   }
   // passwordMatchError() {

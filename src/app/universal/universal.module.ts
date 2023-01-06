@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
+    NgxSpinnerModule
   ]
 })
 export class UniversalModule { }

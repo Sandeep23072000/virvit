@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { FormGroup, FormsModule, ReactiveFormsModule,FormControl, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-landingpage1',
@@ -19,9 +20,11 @@ export class Landingpage1Component {
   jobsdata: any;
   constructor(
     private fb : FormBuilder,
-    private http : HttpClient
+    private http : HttpClient,
+    private spinner: NgxSpinnerService
 
    ) {
+    this.spinner.show();
     this.searchForm = this.fb.group({
       title: ['', Validators.compose([Validators.required])],
       area: ['', Validators.compose([Validators.required])],
@@ -29,10 +32,12 @@ export class Landingpage1Component {
     this.http.get('https://virvit.mydevpartner.website/vvapi/v1/jobs/').subscribe((response: any) => {
       console.log(response.results);
       this.jobsdata = response.results;
+      this.spinner.hide();
   });
 }
 
   onSubmit(){
+    this.spinner.show();
     this.submitted = true;
     // if (this.searchForm.invalid) {
     //   return;
@@ -43,6 +48,7 @@ export class Landingpage1Component {
     this.http.post('https://virvit.mydevpartner.website/vvapi/v1/job-filter/', this.searchForm.value).subscribe(data => {
         console.log(data);
         localStorage.setItem("search", JSON.stringify(data));
+        this.spinner.hide();
   });
   this.searchkey =JSON.parse(localStorage.getItem("search") || '{}');
   console.log(this.searchkey);
