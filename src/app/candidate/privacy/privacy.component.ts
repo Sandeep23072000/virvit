@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-privacy',
@@ -20,7 +21,8 @@ export class PrivacyComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private timeService: TimeService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) {
     this.spinner.show();
     setTimeout(() => {
@@ -48,6 +50,7 @@ export class PrivacyComponent implements OnInit {
     this.submitted = true;
     if(this.privacyForm.valid){
     this.timeService.postapi('change-password/', this.privacyForm.value).subscribe(data => { console.log(data) });
+    this.toastr.success("", "Password Successfully Changeded");
   }
   else {
     console.log('error');

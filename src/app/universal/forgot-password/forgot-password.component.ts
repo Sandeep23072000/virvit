@@ -3,6 +3,8 @@ import { FormGroup,FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,7 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) { 
     this.spinner.show();
     setTimeout(() => {
@@ -33,6 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
     if(this.passwordForm.valid){
       this.http.post('https://virvit.mydevpartner.website/vvapi/v1/forgot-password/', this.passwordForm.value).subscribe((response:any)=> {
       console.log(response) 
+      this.toastr.success("","Reset Password Successfully Sent");
     });
   }
 }

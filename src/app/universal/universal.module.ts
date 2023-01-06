@@ -17,6 +17,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -42,7 +44,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    NgxSpinnerModule
+    NgxSpinnerModule.forRoot(),
+    ToastrModule,
+    // BrowserAnimationsModule,
+   
   ]
 })
 export class UniversalModule { }

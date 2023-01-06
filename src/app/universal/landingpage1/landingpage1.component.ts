@@ -3,6 +3,7 @@ import { FormBuilder,Validators } from '@angular/forms';
 import { FormGroup, FormsModule, ReactiveFormsModule,FormControl, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-landingpage1',
@@ -21,7 +22,9 @@ export class Landingpage1Component {
   constructor(
     private fb : FormBuilder,
     private http : HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
+  
 
    ) {
     this.spinner.show();
@@ -49,6 +52,7 @@ export class Landingpage1Component {
         console.log(data);
         localStorage.setItem("search", JSON.stringify(data));
         this.spinner.hide();
+        this.toastr.success("", "Successfully Searched Jobs");
   });
   this.searchkey =JSON.parse(localStorage.getItem("search") || '{}');
   console.log(this.searchkey);

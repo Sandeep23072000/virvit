@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,9 @@ export class HeaderComponent implements OnInit {
   name: any;
 
   constructor(
-      private router: Router
+      private router: Router,
+      private toastr: ToastrService,
+      
   ) {}
   ngOnInit(): void {
     this.name =JSON.parse(localStorage.getItem("login") || '{}');
@@ -18,5 +21,6 @@ export class HeaderComponent implements OnInit {
   }
   clear(){
     localStorage.clear();
+    this.toastr.success("", "Logout Successfully");
   }
 }

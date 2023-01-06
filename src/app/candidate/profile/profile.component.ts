@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { __values } from 'tslib';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class ProfileComponent implements OnInit {
     private timeService: TimeService,
     private fb: FormBuilder,
     private http: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
 
   ) {
     
@@ -277,6 +279,7 @@ export class ProfileComponent implements OnInit {
       }
       this.timeService.postForm('user-profile-update/', Candidatelist).subscribe(response => {
         console.log(response)
+        this.toastr.success("", "Profile Successfully Updated");
         localStorage.setItem("login", JSON.stringify(response));
       });
      }

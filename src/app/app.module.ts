@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,7 @@ import { TimeService } from './time.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,9 +28,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule.forRoot(),
+    ToastrModule.forRoot(),
    
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [TimeService],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { TimeService } from 'src/app/time.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private timeService: TimeService,
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) {
     this.spinner.show();
     setTimeout(() => {
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
       this.searchdata = data;
       console.log(data);
       this.spinner.hide();
+      this.toastr.success("", "Successfully Searched Jobs");
       this.searchdata.forEach((key: any) => {
         console.log(key)
         this.iddata = key.id;
@@ -75,13 +78,19 @@ export class HomeComponent implements OnInit {
     const data = { job: id, user: this.name.id }
     this.timeService.postapi('bookmark-job/', data).subscribe(data => {
       console.log(data)
+      this.toastr.success("", "Job Successfully Saved");
     });
   }
   apply(id: number) {
     const data = { job: id, user: this.name.id }
     this.timeService.postapi('apply-job/', data).subscribe(data => {
       console.log(data)
+      this.toastr.success("", "Job Successfully Applied");
     });
+
+  }
+  ClearData(){
+    this.search2Form.reset();
   }
   // this.searchdata.forEach((key: any) => {
   //   console.log(key)

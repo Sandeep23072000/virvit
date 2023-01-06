@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { __values } from 'tslib';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
 
   ) {
     this.spinner.show();
@@ -120,6 +122,8 @@ export class RegisterComponent implements OnInit {
 
       this.http.post('https://virvit.mydevpartner.website/vvapi/v1/new-user-signup/', formdata).subscribe(data => {
         console.log(data);
+        this.toastr.success('','Registration Successful');
+        this.toastr.error('','Registration Failed');
 
       });
     }

@@ -3,6 +3,7 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
 import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators, FormGroupName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent {
     private router: Router,
     private http: HttpClient,
     private fb: FormBuilder,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
 
   ) {
     this.spinner.show();
@@ -50,6 +52,8 @@ export class LoginComponent {
       console.log('Your form has been submitted', this.checkoutForm.value);
       this.http.post('https://virvit.mydevpartner.website/vvapi/v1/login/', this.checkoutForm.value).subscribe(data => {
         console.log(data);
+        this.toastr.success("","You Have Login Sussfully");
+        // this.toastr.error("","Login Failed")
         // this.spinner.hide();
         this.router.navigate(['/candidate']);
         localStorage.setItem("login", JSON.stringify(data));
