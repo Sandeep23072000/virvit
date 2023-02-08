@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
     if(this.passwordForm.valid){
       this.http.post('https://virvit.mydevpartner.website/vvapi/v1/forgot-password/', this.passwordForm.value).subscribe((response:any)=> {
       console.log(response) 
-      this.toastr.success("","Reset Password Successfully Sent");
+      this.toastr.success("","Reset Password Link Successfully Sent");
     });
   }
 }
